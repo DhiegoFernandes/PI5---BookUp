@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/principal">
+    <fragment
+        android:id="@+id/principal"
+        android:name="com.example.piandroid.Fragments.Principal"
+        android:label="tela_principal"
+        tools:layout="@layout/tela_principal" >
+        <action
+            android:id="@+id/action_principal_to_livros"
+            app:destination="@id/livros" />
+    </fragment>
+    <fragment
+        android:id="@+id/livros"
+        android:name="com.example.piandroid.Fragments.Livros"
+        android:label="tela_livros"
+        tools:layout="@layout/tela_livros" />
+</navigation>
