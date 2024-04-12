@@ -1,5 +1,5 @@
 # PI5---BookUp
-BookUp
+BookUp - Aplicativo para Aprendizado e Organização de Livros
 
 BookUp é um aplicativo Android desenvolvido em Kotlin para auxiliar na organização, aprendizado e promoção da leitura. Com o BookUp, os usuários podem cadastrar livros, receber dicas de leitura e notificações para estudar, promovendo assim uma experiência de aprendizado contínuo e enriquecedora.
 
