@@ -5,18 +5,58 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.piandroid.R
+import com.example.piandroid.databinding.TelaLivrosBinding
 
 
 class Livros : Fragment() {
-
+    private var _binding: TelaLivrosBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.tela_livros, container, false)
+
+        _binding = TelaLivrosBinding.inflate(inflater,container,false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.btnFragPrincipal.setOnClickListener {
+            findNavController().navigate(R.id.action_livros_to_principal)
+        }
+        binding.btnAbreLivro.setOnClickListener {
+            findNavController().navigate(R.id.action_livros_to_livro)
+        }
+
+        //Bottom Navigation Livros
+        binding.bottomNavigationViewLivros.setOnNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.btnVoltar ->{
+                    findNavController().popBackStack()
+                    true
+                }
+                R.id.btnHome -> {
+                    findNavController().navigate(R.id.action_livros_to_principal)
+                    true
+                }
+                R.id.btnLivros -> {
+                    //Não faz nada
+                    true
+                }
+                else -> false
+            }
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 

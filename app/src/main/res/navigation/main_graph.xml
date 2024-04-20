@@ -3,19 +3,47 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
-    app:startDestination="@id/principal">
+    app:startDestination="@id/splashScreen">
     <fragment
-        android:id="@+id/principal"
-        android:name="com.example.piandroid.Fragments.Principal"
-        android:label="tela_principal"
-        tools:layout="@layout/tela_principal" >
+        android:id="@+id/splashScreen"
+        android:name="com.example.piandroid.Fragments.SplashScreen"
+        android:label="fragment_splash_screen"
+        tools:layout="@layout/fragment_splash_screen" >
         <action
-            android:id="@+id/action_principal_to_livros"
-            app:destination="@id/livros" />
+            android:id="@+id/action_splashScreen_to_principal"
+            app:destination="@id/navPrincLivros" />
     </fragment>
     <fragment
-        android:id="@+id/livros"
-        android:name="com.example.piandroid.Fragments.Livros"
-        android:label="tela_livros"
-        tools:layout="@layout/tela_livros" />
+        android:id="@+id/livro"
+        android:name="com.example.piandroid.Fragments.Livro"
+        android:label="fragment_livro"
+        tools:layout="@layout/fragment_livro" >
+        <action
+            android:id="@+id/action_livro_to_livros"
+            app:destination="@id/navPrincLivros" />
+    </fragment>
+    <navigation android:id="@+id/navPrincLivros"
+        app:startDestination="@id/principal">
+        <fragment
+            android:id="@+id/livros"
+            android:name="com.example.piandroid.Fragments.Livros"
+            android:label="tela_livros"
+            tools:layout="@layout/tela_livros">
+            <action
+                android:id="@+id/action_livros_to_principal"
+                app:destination="@id/principal" />
+            <action
+                android:id="@+id/action_livros_to_livro"
+                app:destination="@id/livro" />
+        </fragment>
+        <fragment
+            android:id="@+id/principal"
+            android:name="com.example.piandroid.Fragments.Principal"
+            android:label="tela_principal"
+            tools:layout="@layout/tela_principal">
+            <action
+                android:id="@+id/action_principal_to_livros"
+                app:destination="@id/livros" />
+        </fragment>
+    </navigation>
 </navigation>

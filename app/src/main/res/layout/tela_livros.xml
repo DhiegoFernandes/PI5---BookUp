@@ -15,10 +15,41 @@
         android:textSize="32sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintVertical_bias="0.084" />
+
+    <Button
+        android:id="@+id/btnFragPrincipal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="272dp"
+        android:text="Vai pro Principal"
+        app:layout_constraintStart_toStartOf="@+id/tvSecondFragment"
+        app:layout_constraintTop_toBottomOf="@+id/tvSecondFragment" />
+
+    <Button
+        android:id="@+id/btnAbreLivro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginBottom="78dp"
+        android:text="Abre Livro"
+        app:layout_constraintBottom_toTopOf="@+id/btnFragPrincipal"
+        app:layout_constraintStart_toStartOf="@+id/btnFragPrincipal" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationViewLivros"
+        app:menu="@menu/bottom_nav_menu"
+
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#ccc"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
