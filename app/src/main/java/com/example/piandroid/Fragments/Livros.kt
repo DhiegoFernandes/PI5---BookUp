@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.piandroid.R
-import com.example.piandroid.databinding.TelaLivrosBinding
+import com.example.piandroid.databinding.FragmentLivrosBinding
 
 
 class Livros : Fragment() {
-    private var _binding: TelaLivrosBinding? = null
+    private var _binding: FragmentLivrosBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -20,7 +20,7 @@ class Livros : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = TelaLivrosBinding.inflate(inflater,container,false)
+        _binding = FragmentLivrosBinding.inflate(inflater,container,false)
         return binding.root
     }
 

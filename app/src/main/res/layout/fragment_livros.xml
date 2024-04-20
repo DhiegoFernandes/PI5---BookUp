@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="272dp"
-        android:text="Vai pro Principal"
+        android:text="teste Vai pro Principal"
         app:layout_constraintStart_toStartOf="@+id/tvSecondFragment"
         app:layout_constraintTop_toBottomOf="@+id/tvSecondFragment" />
 

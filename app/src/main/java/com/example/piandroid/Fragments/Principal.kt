@@ -10,13 +10,13 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.piandroid.R
-import com.example.piandroid.databinding.TelaPrincipalBinding
+import com.example.piandroid.databinding.FragmentPrincipalBinding
 import com.google.android.material.button.MaterialButton
 
 
 class Principal : Fragment() {
 
-    private var _binding: TelaPrincipalBinding? = null
+    private var _binding: FragmentPrincipalBinding? = null
     private val binding get() = _binding!!
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +27,7 @@ class Principal : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = TelaPrincipalBinding.inflate(inflater,container,false)
+        _binding = FragmentPrincipalBinding.inflate(inflater,container,false)
         return binding.root
     }
 
