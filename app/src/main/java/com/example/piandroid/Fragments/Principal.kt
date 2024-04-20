@@ -33,6 +33,16 @@ class Principal : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+        binding.btnCadastrarLivro.setOnClickListener{
+            findNavController().navigate(R.id.action_global_cadastroLivro)
+        }
+        binding.btnMeusLivros.setOnClickListener{
+            findNavController().navigate(R.id.action_principal_to_livros)
+        }
+
+
         binding.btnFragLivros.setOnClickListener{
             findNavController().navigate(R.id.action_principal_to_livros)
         }

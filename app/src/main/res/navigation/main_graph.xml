@@ -45,5 +45,13 @@
                 android:id="@+id/action_principal_to_livros"
                 app:destination="@id/livros" />
         </fragment>
+        <action
+            android:id="@+id/action_global_cadastroLivro"
+            app:destination="@id/cadastroLivro" />
     </navigation>
+    <fragment
+        android:id="@+id/cadastroLivro"
+        android:name="com.example.piandroid.Fragments.CadastroLivro"
+        android:label="fragment_cadastro_livro"
+        tools:layout="@layout/fragment_cadastro_livro" />
 </navigation>

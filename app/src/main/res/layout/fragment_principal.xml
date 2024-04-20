@@ -11,9 +11,9 @@
         android:id="@+id/tvFirstFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="49dp"
         android:text="Tela Principal"
         android:textSize="32sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,11 +22,11 @@
         android:id="@+id/btnFragLivros"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="41dp"
-        android:text="Ir livros"
+        android:layout_marginBottom="50dp"
+        android:text="teste Ir livros"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewPrincipal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvFirstFragment" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationViewPrincipal"
@@ -38,6 +38,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu" />
+
+    <Button
+        android:id="@+id/btnCadastrarLivro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="206dp"
+        android:text="Cadastrar Livro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnMeusLivros"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="14dp"
+        android:text="Meus Livros"
+        app:layout_constraintStart_toStartOf="@+id/btnCadastrarLivro"
+        app:layout_constraintTop_toBottomOf="@+id/btnCadastrarLivro" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
