@@ -1,17 +1,13 @@
 package com.example.piandroid.Fragments
 
 import android.os.Bundle
-import android.text.TextUtils.replace
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.piandroid.R
 import com.example.piandroid.databinding.FragmentPrincipalBinding
-import com.google.android.material.button.MaterialButton
 
 
 class Principal : Fragment() {
@@ -26,7 +22,6 @@ class Principal : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         _binding = FragmentPrincipalBinding.inflate(inflater,container,false)
         return binding.root
     }
@@ -34,24 +29,31 @@ class Principal : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         binding.btnCadastrarLivro.setOnClickListener{
             findNavController().navigate(R.id.action_global_cadastroLivro)
         }
         binding.btnMeusLivros.setOnClickListener{
             findNavController().navigate(R.id.action_principal_to_livros)
         }
-
-
+        binding.btnDicasDeLeitura.setOnClickListener {
+            findNavController().navigate(R.id.action_global_dicasDeLeitura)
+        }
         binding.btnFragLivros.setOnClickListener{
             findNavController().navigate(R.id.action_principal_to_livros)
         }
+
+
+        // Deixa o icone Home Highlited
+        val menu = binding.bottomNavigationViewPrincipal.menu
+        val homeItem = menu.findItem(R.id.btnHome)
+        homeItem.isChecked = true
 
         //Bottom Navigation Principal
         binding.bottomNavigationViewPrincipal.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.btnVoltar ->{
-                    findNavController().popBackStack()
+                    //Fecha app
+                    activity?.finish()
                     true
                 }
                 R.id.btnHome -> {

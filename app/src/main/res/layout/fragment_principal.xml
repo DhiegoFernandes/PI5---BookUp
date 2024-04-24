@@ -22,31 +22,21 @@
         android:id="@+id/btnFragLivros"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="129dp"
         android:text="teste Ir livros"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewPrincipal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationViewPrincipal"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="#ccc"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
 
     <Button
         android:id="@+id/btnCadastrarLivro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
         android:layout_marginTop="206dp"
         android:text="Cadastrar Livro"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/btnDicasDeLeitura"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -58,6 +48,27 @@
         android:text="Meus Livros"
         app:layout_constraintStart_toStartOf="@+id/btnCadastrarLivro"
         app:layout_constraintTop_toBottomOf="@+id/btnCadastrarLivro" />
+
+    <Button
+        android:id="@+id/btnDicasDeLeitura"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:text="Dicas de Leitura"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnMeusLivros" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationViewPrincipal"
+        android:layout_width="411dp"
+        android:layout_height="wrap_content"
+        android:background="#ccc"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

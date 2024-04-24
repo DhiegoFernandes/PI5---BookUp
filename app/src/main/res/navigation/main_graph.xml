@@ -48,10 +48,18 @@
         <action
             android:id="@+id/action_global_cadastroLivro"
             app:destination="@id/cadastroLivro" />
+        <action
+            android:id="@+id/action_global_dicasDeLeitura"
+            app:destination="@id/dicasDeLeitura" />
     </navigation>
     <fragment
         android:id="@+id/cadastroLivro"
         android:name="com.example.piandroid.Fragments.CadastroLivro"
         android:label="fragment_cadastro_livro"
         tools:layout="@layout/fragment_cadastro_livro" />
+    <fragment
+        android:id="@+id/dicasDeLeitura"
+        android:name="com.example.piandroid.Fragments.DicasDeLeitura"
+        android:label="fragment_dicas_de_leitura"
+        tools:layout="@layout/fragment_dicas_de_leitura" />
 </navigation>
