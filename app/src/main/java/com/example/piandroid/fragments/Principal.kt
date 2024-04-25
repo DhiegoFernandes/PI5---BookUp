@@ -1,4 +1,4 @@
-package com.example.piandroid.Fragments
+package com.example.piandroid.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater

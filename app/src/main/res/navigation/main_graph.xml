@@ -6,7 +6,7 @@
     app:startDestination="@id/splashScreen">
     <fragment
         android:id="@+id/splashScreen"
-        android:name="com.example.piandroid.Fragments.SplashScreen"
+        android:name="com.example.piandroid.fragments.SplashScreen"
         android:label="fragment_splash_screen"
         tools:layout="@layout/fragment_splash_screen" >
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/livro"
-        android:name="com.example.piandroid.Fragments.Livro"
+        android:name="com.example.piandroid.fragments.LivroFragmento"
         android:label="fragment_livro"
         tools:layout="@layout/fragment_livro" >
         <action
@@ -26,7 +26,7 @@
         app:startDestination="@id/principal">
         <fragment
             android:id="@+id/livros"
-            android:name="com.example.piandroid.Fragments.Livros"
+            android:name="com.example.piandroid.fragments.Livros"
             android:label="tela_livros"
             tools:layout="@layout/fragment_livros">
             <action
@@ -38,7 +38,7 @@
         </fragment>
         <fragment
             android:id="@+id/principal"
-            android:name="com.example.piandroid.Fragments.Principal"
+            android:name="com.example.piandroid.fragments.Principal"
             android:label="tela_principal"
             tools:layout="@layout/fragment_principal">
             <action
@@ -54,12 +54,12 @@
     </navigation>
     <fragment
         android:id="@+id/cadastroLivro"
-        android:name="com.example.piandroid.Fragments.CadastroLivro"
+        android:name="com.example.piandroid.fragments.CadastroLivro"
         android:label="fragment_cadastro_livro"
         tools:layout="@layout/fragment_cadastro_livro" />
     <fragment
         android:id="@+id/dicasDeLeitura"
-        android:name="com.example.piandroid.Fragments.DicasDeLeitura"
+        android:name="com.example.piandroid.fragments.DicasDeLeitura"
         android:label="fragment_dicas_de_leitura"
         tools:layout="@layout/fragment_dicas_de_leitura" />
 </navigation>

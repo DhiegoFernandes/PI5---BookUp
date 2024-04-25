@@ -1,11 +1,10 @@
-package com.example.piandroid.Fragments
+package com.example.piandroid.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.piandroid.R
 import com.example.piandroid.databinding.FragmentCadastroLivroBinding
 
 
