@@ -1,12 +1,9 @@
 package com.example.piandroid
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import com.example.piandroid.Fragments.Livros
-import com.example.piandroid.Fragments.Principal
 import com.example.piandroid.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
