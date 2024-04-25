@@ -10,11 +10,14 @@ import android.os.Parcelable
 class Livro (
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val nome: String?,
-    val paginas: Int
+    val paginas: Int,
+    val paginasLidas: Int
+
 ):Parcelable{
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
         parcel.readString(),
+        parcel.readInt(),
         parcel.readInt()
     ) {
     }
@@ -23,6 +26,7 @@ class Livro (
         parcel.writeInt(id)
         parcel.writeString(nome)
         parcel.writeInt(paginas)
+        parcel.writeInt(paginasLidas)
 
     }
 

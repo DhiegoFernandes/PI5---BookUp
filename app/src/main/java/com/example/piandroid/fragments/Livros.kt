@@ -60,6 +60,7 @@ class Livros : Fragment() {
 
         }
 
+
         //Bottom Navigation Livros
         binding.bottomNavigationViewLivros.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
@@ -81,11 +82,11 @@ class Livros : Fragment() {
     }
 
     private fun livrosProvisorios() = listOf<Livro>(
-        Livro(0, "harry potter e o calice de fogo", 1),
-        Livro(1, "livro 2", 2),
-        Livro(2, "livro 3", 3),
-        Livro(3, "livro 4", 4),
-        Livro(4, "livro 5", 5),
+        Livro(0, "harry potter e o calice de fogo", 1, 1),
+        Livro(1, "livro 2", 2 , 1),
+        Livro(2, "livro 3", 3, 1),
+        Livro(3, "livro 4", 4 , 1),
+        Livro(4, "livro 5", 5, 1),
 
     )
 }
