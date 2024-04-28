@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
 //Instancia e retorna view model
-class ViewModelFactory (val app: Application, private val livroRepository: LivroRepository): ViewModelProvider.Factory{
+class LivroViewModelFactory (val app: Application, private val livroRepository: LivroRepository): ViewModelProvider.Factory{
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(LivroViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")

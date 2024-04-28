@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFC107"
-    tools:context=".fragments.Livros">
+    tools:context=".ui.Livros">
 
     <TextView
         android:id="@+id/tvSecondFragment"

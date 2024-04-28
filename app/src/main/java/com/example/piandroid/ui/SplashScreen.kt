@@ -1,4 +1,4 @@
-package com.example.piandroid.view
+package com.example.piandroid.ui
 
 import android.os.Bundle
 import android.os.Handler

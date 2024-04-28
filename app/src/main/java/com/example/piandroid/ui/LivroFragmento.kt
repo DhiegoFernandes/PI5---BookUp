@@ -1,4 +1,4 @@
-package com.example.piandroid.view
+package com.example.piandroid.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -14,7 +14,7 @@ class LivroFragmento : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_livro, container, false)
+        return inflater.inflate(R.layout.fragment_livro_fragmento, container, false)
     }
 
 }

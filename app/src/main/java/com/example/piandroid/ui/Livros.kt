@@ -1,30 +1,35 @@
-package com.example.piandroid.view
+package com.example.piandroid.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.piandroid.R
-import com.example.piandroid.controller.LivroAdapter
 import com.example.piandroid.databinding.FragmentLivrosBinding
+import com.example.piandroid.databinding.FragmentPrincipalBinding
+import com.example.piandroid.model.AppDatabase
 import com.example.piandroid.model.Livro
+import com.example.piandroid.model.LivroDao
+import com.example.piandroid.view.LivroRepository
+import com.example.piandroid.view.LivroViewModel
+import com.example.piandroid.view.LivroViewModelFactory
 
 
 class Livros : Fragment() {
+
     private var _binding: FragmentLivrosBinding? = null
     private val binding get() = _binding!!
-
-    private lateinit var livroAdapter: LivroAdapter
+    private lateinit var livroViewModel: LivroViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentLivrosBinding.inflate(inflater,container,false)
+        _binding = FragmentLivrosBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -32,24 +37,21 @@ class Livros : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        iniciarViewModel()
         iniciaListeners()
-        iniciaRecyclerView(livrosProvisorios())
+
+
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+
+
+
+
+    private fun iniciarViewModel() {
+        val livroRepository = LivroRepository(AppDatabase(requireContext()))
+        val viewModelProviderFactory = LivroViewModelFactory(requireActivity().application, livroRepository)
+        livroViewModel = ViewModelProvider(this, viewModelProviderFactory).get(LivroViewModel::class.java)
     }
-
-    private fun iniciaRecyclerView(livroList: List<Livro>){
-        livroAdapter = LivroAdapter(livroList)
-
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerView.setHasFixedSize(true)
-        binding.recyclerView.adapter = livroAdapter
-    }
-
 
 
 
@@ -59,8 +61,6 @@ class Livros : Fragment() {
             findNavController().navigate(R.id.action_livros_to_principal)
 
         }
-
-
         //Bottom Navigation Livros
         binding.bottomNavigationViewLivros.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
@@ -81,12 +81,14 @@ class Livros : Fragment() {
         }
     }
 
-    private fun livrosProvisorios() = listOf<Livro>(
-        Livro(0, "harry potter e o calice de fogo", 1, 1),
-        Livro(1, "livro 2", 2 , 1),
-        Livro(2, "livro 3", 3, 1),
-        Livro(3, "livro 4", 4 , 1),
-        Livro(4, "livro 5", 5, 1),
 
-    )
+//    private fun iniciaRecyclerView(livroList: List<Livro>){
+//        livroAdapter = LivroAdapter(livroList)
+//
+//        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+//        binding.recyclerView.setHasFixedSize(true)
+//        binding.recyclerView.adapter = livroAdapter
+//    }
+
+
 }

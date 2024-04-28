@@ -1,4 +1,4 @@
-package com.example.piandroid.view
+package com.example.piandroid.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,13 +7,19 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.piandroid.R
+import com.example.piandroid.controller.LivroAdapter
 import com.example.piandroid.databinding.FragmentPrincipalBinding
+import com.example.piandroid.view.LivroViewModel
 
 
 class Principal : Fragment() {
 
     private var _binding: FragmentPrincipalBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var livroViewModel: LivroViewModel
+    private lateinit var livroAdapter: LivroAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -28,7 +34,21 @@ class Principal : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        iniciarListeners()
 
+
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+
+
+
+
+    private fun iniciarListeners(){
         binding.btnCadastrarLivro.setOnClickListener{
             findNavController().navigate(R.id.action_global_cadastroLivro)
         }
@@ -68,11 +88,6 @@ class Principal : Fragment() {
                 else -> false
             }
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
 
