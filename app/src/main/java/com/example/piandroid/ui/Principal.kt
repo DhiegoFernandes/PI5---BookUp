@@ -35,8 +35,7 @@ class Principal : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         iniciarListeners()
-
-
+        
     }
 
     override fun onDestroyView() {
