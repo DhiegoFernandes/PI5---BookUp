@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:layout_marginBottom="5dp">
+    android:layout_marginBottom="5dp"
+    android:orientation="horizontal">
 
 
     <androidx.cardview.widget.CardView
@@ -17,9 +17,9 @@
             android:id="@+id/txtIdLivro"
             android:layout_width="29dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
             android:text="ID"
-            android:textSize="22dp"
-            android:layout_marginLeft="8dp"/>
+            android:textSize="22dp" />
 
         <LinearLayout
             android:layout_width="410dp"
@@ -37,12 +37,6 @@
                 android:text="Harry Potter e o Cálice de Fogo"
                 android:textAlignment="center" />
 
-            <TextView
-                android:id="@+id/txtPorcentagem"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:text="Porcentagem" />
 
             <LinearLayout
                 android:layout_width="124dp"
@@ -68,6 +62,33 @@
                     app:srcCompat="@drawable/ic_trash" />
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="124dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtPaginasLidas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:text="pgsRestantes" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:text="/" />
+                <TextView
+                    android:id="@+id/txtPaginas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:text="pgs" />
+
+            </LinearLayout>
+
             <ProgressBar
                 android:id="@+id/progressBar"
                 style="?android:attr/progressBarStyleHorizontal"
@@ -76,7 +97,7 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:layout_weight="0"
-                android:background="#0866FF" />
+                android:progressBackgroundTint="#004AAC" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
