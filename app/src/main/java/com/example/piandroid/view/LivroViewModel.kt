@@ -1,24 +1,29 @@
 package com.example.piandroid.view
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.piandroid.model.Livro
 import kotlinx.coroutines.launch
 
-class LivroViewModel(app: Application, private val livroRepository: LivroRepository): AndroidViewModel(app) {
+class LivroViewModel(private val repository: LivroRepository): ViewModel() {
+
+    val todosLivros: LiveData<List<Livro>> = repository.todosLivros
 
     fun inserirLivro(livro: Livro) = viewModelScope.launch {
-        livroRepository.inserirLivro(livro)
+        repository.inserirLivro(livro)
+        Log.d("LivroViewModel", "Livro cadastrado: $livro")
     }
-    fun atualizaLivro(livro: Livro) = viewModelScope.launch {
-        livroRepository.atualizarLivro(livro)
+    fun atualizarLivro(livro: Livro) = viewModelScope.launch {
+        repository.atualizarLivro(livro)
+        Log.d("LivroViewModel", "Livro atualizado: $livro")
     }
-    fun deletaLivro(livro: Livro) = viewModelScope.launch {
-        livroRepository.deletarLivro(livro)
+    fun deletarLivro(livro: Livro) = viewModelScope.launch {
+        repository.deletarLivro(livro)
     }
 
-    fun todosLivros() = livroRepository.todosLivros()
-    fun procuraLivro(query: String?) = livroRepository.procuraLivro(query)
+    //fun todosLivros() = livroRepository.todosLivros()
+    fun procuraLivro(query: String?) = repository.procuraLivro(query)
 
 }

@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.piandroid.R
 import com.example.piandroid.controller.LivroAdapter
 import com.example.piandroid.databinding.FragmentPrincipalBinding
+import com.example.piandroid.model.Livro
 import com.example.piandroid.view.LivroViewModel
 
 
@@ -49,7 +50,10 @@ class Principal : Fragment() {
 
     private fun iniciarListeners(){
         binding.btnCadastrarLivro.setOnClickListener{
-            findNavController().navigate(R.id.action_global_cadastroLivro)
+            val livro = Livro(nome = "", paginas = 0, paginasLidas = 0)
+
+            val action = LivroListFragmentDirections.actionGlobalCadastroLivro(livro)
+            findNavController().navigate(action)
         }
         binding.btnMeusLivros.setOnClickListener{
             findNavController().navigate(R.id.action_principal_to_livros)

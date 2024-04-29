@@ -13,28 +13,16 @@
             android:id="@+id/action_splashScreen_to_principal"
             app:destination="@id/navPrincLivros" />
     </fragment>
-    <fragment
-        android:id="@+id/livro"
-        android:name="com.example.piandroid.ui.LivroFragmento"
-        android:label="fragment_livro"
-        tools:layout="@layout/fragment_livro_fragmento" >
-        <action
-            android:id="@+id/action_livro_to_livros"
-            app:destination="@id/navPrincLivros" />
-    </fragment>
     <navigation android:id="@+id/navPrincLivros"
         app:startDestination="@id/principal">
         <fragment
             android:id="@+id/livros"
-            android:name="com.example.piandroid.ui.Livros"
+            android:name="com.example.piandroid.ui.LivroListFragment"
             android:label="tela_livros"
-            tools:layout="@layout/fragment_livros">
+            tools:layout="@layout/fragment_livro_list">
             <action
                 android:id="@+id/action_livros_to_principal"
                 app:destination="@id/principal" />
-            <action
-                android:id="@+id/action_livros_to_livro"
-                app:destination="@id/livro" />
         </fragment>
         <fragment
             android:id="@+id/principal"
@@ -44,6 +32,7 @@
             <action
                 android:id="@+id/action_principal_to_livros"
                 app:destination="@id/livros" />
+
         </fragment>
         <action
             android:id="@+id/action_global_cadastroLivro"
@@ -52,19 +41,25 @@
             android:id="@+id/action_global_dicasDeLeitura"
             app:destination="@id/dicasDeLeitura" />
     </navigation>
+
     <fragment
         android:id="@+id/cadastroLivro"
         android:name="com.example.piandroid.ui.CadastroLivro"
         android:label="fragment_cadastro_livro"
-        tools:layout="@layout/fragment_cadastro_livro" />
+        tools:layout="@layout/fragment_cadastro_livro" >
+    <argument
+        android:name="livro"
+        app:argType="com.example.piandroid.model.Livro"
+        />
+        <action
+            android:id="@+id/action_cadastroLivro_to_navPrincLivros"
+            app:destination="@id/navPrincLivros" />
+    </fragment>
+
     <fragment
         android:id="@+id/dicasDeLeitura"
         android:name="com.example.piandroid.ui.DicasDeLeitura"
         android:label="fragment_dicas_de_leitura"
         tools:layout="@layout/fragment_dicas_de_leitura" />
-    <argument
-        android:name="livro"
-        app:argType="com.example.piandroid.model.Livro"
-        app:nullable="true"/>
 
 </navigation>

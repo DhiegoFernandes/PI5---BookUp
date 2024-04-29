@@ -10,8 +10,8 @@ import android.os.Parcelable
 class Livro (
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val nome: String?,
-    val paginas: Int,
-    val paginasLidas: Int
+    val paginas: Int?,
+    val paginasLidas: Int?
 
 ):Parcelable{
     constructor(parcel: Parcel) : this(
@@ -25,8 +25,8 @@ class Livro (
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeInt(id)
         parcel.writeString(nome)
-        parcel.writeInt(paginas)
-        parcel.writeInt(paginasLidas)
+        parcel.writeString(paginas.toString())
+        parcel.writeString(paginasLidas.toString())
 
     }
 
@@ -42,6 +42,10 @@ class Livro (
         override fun newArray(size: Int): Array<Livro?> {
             return arrayOfNulls(size)
         }
+    }
+
+    override fun toString(): String {
+        return "Livro(id=$id, nome='$nome', paginas=$paginas, paginasLidas=$paginasLidas)"
     }
 }
 annotation class Parcelize

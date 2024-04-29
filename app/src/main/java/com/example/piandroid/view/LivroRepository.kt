@@ -1,17 +1,27 @@
 package com.example.piandroid.view
 
-import com.example.piandroid.model.AppDatabase
+import androidx.lifecycle.LiveData
 import com.example.piandroid.model.Livro
+import com.example.piandroid.model.LivroDao
 
-class LivroRepository(private val db: AppDatabase) {
+class LivroRepository(private val livroDao: LivroDao) {
 
+    val todosLivros: LiveData<List<Livro>> = livroDao.todosLivros()
     //Metodos
-    suspend fun inserirLivro(livro: Livro) = db.livroDao().inserirLivro(livro)
-    suspend fun atualizarLivro(livro: Livro) = db.livroDao().atualizarLivro(livro)
-    suspend fun deletarLivro(livro: Livro) = db.livroDao().deletarLivro(livro)
+    suspend fun inserirLivro(livro: Livro) {
+        livroDao.inserirLivro(livro)
 
-    fun todosLivros() = db.livroDao().todosLivros()
+    }
+    suspend fun atualizarLivro(livro: Livro) {
+        livroDao.atualizarLivro(livro)
+    }
 
-    fun procuraLivro(query: String?) = db.livroDao().procuraLivro(query)
+    suspend fun deletarLivro(livro: Livro) {
+        livroDao.deletarLivro(livro)
+    }
+
+    //fun todosLivros() = db.todosLivros()
+
+    fun procuraLivro(query: String?) = livroDao.procuraLivro(query)
 
 }

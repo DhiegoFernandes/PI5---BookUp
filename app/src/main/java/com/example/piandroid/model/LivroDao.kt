@@ -4,17 +4,18 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
-import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 
 @Dao
 interface LivroDao {
     //Queries
-    @Insert(onConflict = OnConflictStrategy.REPLACE)//Caso haja conflito, sobrepor
+    @Insert
     suspend fun inserirLivro(livro: Livro) //suspend -> programação assincrona
+
     @Update
     suspend fun atualizarLivro(livro: Livro)
+
     @Delete
     suspend fun deletarLivro(livro: Livro)
 
