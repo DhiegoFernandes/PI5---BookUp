@@ -83,7 +83,8 @@ class CadastroLivro : Fragment() {
             binding.editPaginas.isFocusableInTouchMode = false
             binding.editPaginas.isClickable  = false
             //Muda cor
-            binding.editPaginas.setBackgroundColor(Color.parseColor("#FF0000"))
+            binding.editPaginas.setBackgroundColor(Color.parseColor("#393939"))
+            binding.editPaginas.setTextColor(Color.parseColor("#fefefe"))
 
             binding.btnCadastrarLivro.setOnClickListener {
 

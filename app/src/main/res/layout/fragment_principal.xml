@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#70D6F3"
+    android:background="@color/black"
     tools:context=".ui.Principal">
 
     <TextView
@@ -14,6 +14,7 @@
         android:layout_marginTop="49dp"
         android:text="Tela Principal"
         android:textSize="32sp"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,6 +25,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="129dp"
         android:text="teste Ir livros"
+        android:backgroundTint="@color/azul"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -36,6 +39,8 @@
         android:layout_marginStart="2dp"
         android:layout_marginTop="206dp"
         android:text="Cadastrar Livro"
+        android:backgroundTint="@color/azul"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="@+id/btnDicasDeLeitura"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -46,6 +51,8 @@
         android:layout_marginStart="9dp"
         android:layout_marginTop="14dp"
         android:text="Meus Livros"
+        android:backgroundTint="@color/azul"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="@+id/btnCadastrarLivro"
         app:layout_constraintTop_toBottomOf="@+id/btnCadastrarLivro" />
 
@@ -57,14 +64,16 @@
         android:text="Dicas de Leitura"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="@color/azul"
+        android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/btnMeusLivros" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationViewPrincipal"
         android:layout_width="411dp"
         android:layout_height="wrap_content"
-        android:background="#ccc"
-
+        android:background="@color/azul"
+        android:textColor="@color/azul"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
