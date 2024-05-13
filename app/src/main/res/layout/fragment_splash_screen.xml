@@ -5,8 +5,8 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.SplashScreen"
-    android:background="#fafa">
+    android:background="@color/azul"
+    tools:context=".ui.SplashScreen">
 
     <TextView
         android:id="@+id/textView4"

@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3F72AF">
+    android:background="#3F72AF"
+    android:backgroundTint="@color/black"
+    >
 
     <TextView
         android:id="@+id/textView911"
@@ -11,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="60dp"
         android:text="Cadastre um livro"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -167,15 +169,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="121dp"
-        android:backgroundTint="#DBE2EF"
+        android:backgroundTint="@color/azul"
         android:text="Cadastrar"
-        android:textColor="#000000"
+        android:textColor="@color/white"
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
 
     <LinearLayout
         android:id="@+id/linearLayout"
