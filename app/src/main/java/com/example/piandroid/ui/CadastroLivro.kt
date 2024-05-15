@@ -104,7 +104,11 @@ class CadastroLivro : Fragment() {
 
                             Snackbar.make(binding.root, "Livro Atualizado", Snackbar.LENGTH_LONG)
                                 .show()
+
+                            //Temp Lista não está atualizando
                             findNavController().popBackStack()
+                            findNavController().popBackStack()
+                            findNavController().navigate(R.id.action_principal_to_livros)
                         } else {
                             Snackbar.make(
                                 binding.root,
