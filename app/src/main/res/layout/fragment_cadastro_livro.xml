@@ -171,7 +171,7 @@
         android:layout_marginBottom="121dp"
         android:backgroundTint="@color/azul"
         android:text="Cadastrar"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
