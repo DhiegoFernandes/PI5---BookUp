@@ -18,13 +18,7 @@ class Principal : Fragment() {
     private var _binding: FragmentPrincipalBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var livroViewModel: LivroViewModel
-    private lateinit var livroAdapter: LivroAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

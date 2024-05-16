@@ -86,6 +86,10 @@ class LivroListFragment : Fragment() {
 
 
     private fun iniciaListeners() {
+        // Deixa o icone Home Highlited
+        val menu = binding.bottomNavigationViewLivros.menu
+        val livroItem = menu.findItem(R.id.btnLivros)
+        livroItem.isChecked = true
 
         //Bottom Navigation Livros
         binding.bottomNavigationViewLivros.setOnNavigationItemSelectedListener { menuItem ->

@@ -10,25 +10,29 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
+        android:layout_marginBottom="12dp"
         android:backgroundTint="@color/azul"
-        android:textColor="@color/white">
-
-        <TextView
-            android:id="@+id/txtIdLivro"
-            android:layout_width="29dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:text="ID"
-            android:textSize="22dp"
-            android:textColor="@color/black"/>
+        android:textColor="@color/white"
+        app:cardCornerRadius="32dp">
 
         <LinearLayout
-            android:layout_width="410dp"
-            android:layout_height="119dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="0"
             android:gravity="center"
             android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtIdLivro"
+                android:layout_width="29dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="ID"
+                android:textColor="@color/black"
+                android:textSize="8dp" />
 
             <TextView
                 android:id="@+id/txtNomeLivro"
@@ -38,8 +42,7 @@
                 android:gravity="center"
                 android:text="Harry Potter e o Cálice de Fogo"
                 android:textAlignment="center"
-                android:textColor="@color/black"
-                />
+                android:textColor="@color/black" />
 
 
             <LinearLayout
@@ -54,8 +57,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
                     android:layout_weight="0"
-                    android:contentDescription="Editar livro"
                     android:backgroundTint="@color/white"
+                    android:contentDescription="Editar livro"
                     app:srcCompat="@drawable/ic_edit" />
 
                 <ImageButton
@@ -81,20 +84,22 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
                     android:text="pgsRestantes"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
                     android:text="/"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black" />
+
                 <TextView
                     android:id="@+id/txtPaginas"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
                     android:text="pgs"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black" />
 
             </LinearLayout>
 

@@ -15,32 +15,20 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="54dp"
         android:text="Tela Livros"
-        android:textSize="32sp"
         android:textColor="@color/white"
+        android:textSize="32sp"
         app:layout_constraintBottom_toTopOf="@+id/recyclerViewLivros"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationViewLivros"
-        android:layout_width="0dp"
-
-        android:layout_height="wrap_content"
-        android:background="@color/azul"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerViewLivros"
-        app:menu="@menu/bottom_nav_menu" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewLivros"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewLivros"
+        android:layout_marginBottom="79dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSecondFragment"
@@ -52,14 +40,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="12dp"
-        android:clickable="true"
+        android:layout_marginBottom="13dp"
         android:backgroundTint="@color/azul"
-        android:textColor="@color/white"
-        android:src="@drawable/ic_add"
+        android:clickable="true"
         android:contentDescription="Adicionar"
+        android:src="@drawable/ic_add"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/recyclerViewLivros"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationViewLivros"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/azul"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
