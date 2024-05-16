@@ -40,12 +40,13 @@ class LivroListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        iniciaListeners()
+        //iniciaListeners()
         val adapter = LivroAdapter(
             onEdit = { livro ->
                 // Ação quando o botão de editar é pressionado
                 val action = LivroListFragmentDirections.actionGlobalCadastroLivro(livro)
                 findNavController().navigate(action)
+
             },
             onDelete = { livro ->
                 // Ação quando o botão de deletar é pressionado
@@ -54,24 +55,17 @@ class LivroListFragment : Fragment() {
                     .show()
             }
         )
-
+        //Inicia recyclerView
         binding.recyclerViewLivros.apply {
             this.adapter = adapter
             layoutManager = LinearLayoutManager(context)
         }
 
+
         livroViewModel.todosLivros.observe(viewLifecycleOwner) { livros ->
             adapter.submitList(livros)
         }
 
-        binding.floatingBtnAddLivro.setOnClickListener {
-
-            val livro = Livro(nome = "", paginas = 0, paginasLidas = 0)
-
-            val action = LivroListFragmentDirections.actionGlobalCadastroLivro(livro)
-            findNavController().navigate(action)
-
-        }
     }
 
 
@@ -79,10 +73,6 @@ class LivroListFragment : Fragment() {
         livroViewModel.deletarLivro(livro)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 
 
     private fun iniciaListeners() {
@@ -91,6 +81,20 @@ class LivroListFragment : Fragment() {
         val livroItem = menu.findItem(R.id.btnLivros)
         livroItem.isChecked = true
 
+        binding.recyclerViewLivros.apply {
+            this.adapter = adapter
+            layoutManager = LinearLayoutManager(context)
+        }
+
+        //botao flutuante
+        binding.floatingBtnAddLivro.setOnClickListener {
+
+            val livro = Livro(nome = "", paginas = 0, paginasLidas = 0)
+
+            val action = LivroListFragmentDirections.actionGlobalCadastroLivro(livro)
+            findNavController().navigate(action)
+
+        }
         //Bottom Navigation Livros
         binding.bottomNavigationViewLivros.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
@@ -112,6 +116,11 @@ class LivroListFragment : Fragment() {
                 else -> false
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 

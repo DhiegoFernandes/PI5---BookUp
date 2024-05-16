@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.piandroid.R
@@ -27,20 +28,16 @@ class Principal : Fragment() {
         return binding.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        //Define a cor barra de status e do menu inferior
+        activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), R.color.black)
+        activity?.window?.navigationBarColor = ContextCompat.getColor(requireContext(), R.color.azul)
         iniciarListeners()
-        
+
     }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
-
-
-
 
     private fun iniciarListeners(){
         binding.btnCadastrarLivro.setOnClickListener{
@@ -87,6 +84,9 @@ class Principal : Fragment() {
         }
     }
 
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
 }
