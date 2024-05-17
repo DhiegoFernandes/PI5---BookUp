@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.piandroid.R
 import com.example.piandroid.databinding.FragmentAjustesBinding
 
 
@@ -25,7 +24,7 @@ class Ajustes : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // TODO: ADICIONAR O GERENCIAMENTO DE HORARIO DE NOTIFICACOES
+        //  ADICIONAR O GERENCIAMENTO DE HORARIO DE NOTIFICACOES
     }
 
     override fun onDestroyView() {

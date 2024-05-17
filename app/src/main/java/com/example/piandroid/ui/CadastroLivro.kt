@@ -203,7 +203,7 @@ class CadastroLivro : Fragment() {
 
 
     private fun getTime(): Long {
-        //TODO PEGAR NOTIFICACOES DO RDB E ADICIONAR MAIS 24 HORAS
+        // PEGAR NOTIFICACOES DO RDB E ADICIONAR MAIS 24 HORAS
         //val date = LocalDateTime.now().plusDays(1)//data local + 1
         //val date = LocalDateTime.now().dayOfMonth+1//dia + 1
         //val date = LocalTime.now().plusHours(24)//hora atual mais 24 hora atual
