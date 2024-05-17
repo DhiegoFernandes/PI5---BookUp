@@ -3,7 +3,7 @@
 
 <div align="center">
 
-[<img src="./app/src/main/res/drawable/bookup_branco.png" width="144"/>](https://github.com/DhiegoFernandes/PI5-BookUp)
+[<img src="./app/src/main/res/drawable/bookupLogo.png" width="144"/>](https://github.com/DhiegoFernandes/PI5-BookUp)
 
   <h1 align="center">BookUP</h1>
 
