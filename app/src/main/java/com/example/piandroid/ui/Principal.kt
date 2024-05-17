@@ -52,8 +52,9 @@ class Principal : Fragment() {
         binding.btnDicasDeLeitura.setOnClickListener {
             findNavController().navigate(R.id.action_global_dicasDeLeitura)
         }
-        binding.btnFragLivros.setOnClickListener{
-            findNavController().navigate(R.id.action_principal_to_livros)
+        binding.btnAjustes.setOnClickListener{
+           // findNavController().navigate(R.id.action_principal_to_livros)
+            findNavController().navigate(R.id.action_global_ajustes)
         }
 
 

@@ -1,6 +1,7 @@
 package com.example.piandroid
 
 import android.Manifest
+import android.app.NotificationChannel
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
@@ -45,6 +46,15 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun iniciarNavegacao(){
+        val navHost = supportFragmentManager.findFragmentById(R.id.fragmentContainerViewPrincipal) as? NavHostFragment
+        navHost?.let {
+            navController = navHost.navController
+        } ?: run {
+            Toast.makeText(this, "Erro ao iniciar navegação.", Toast.LENGTH_LONG).show()
+        }
+    }
+
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
         ContextCompat.checkSelfPermission(this, it) == PackageManager.PERMISSION_GRANTED
     }
@@ -63,14 +73,6 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun iniciarNavegacao(){
-        val navHost = supportFragmentManager.findFragmentById(R.id.fragmentContainerViewPrincipal) as? NavHostFragment
-        navHost?.let {
-            navController = navHost.navController
-        } ?: run {
-            Toast.makeText(this, "Erro ao iniciar navegação.", Toast.LENGTH_LONG).show()
-        }
-    }
 
 
 }
