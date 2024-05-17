@@ -1,6 +1,19 @@
+<br>
 # BookUp
 
-BookUp é um aplicativo Android desenvolvido em Kotlin para auxiliar na organização, aprendizado e na promoção da leitura.
+<div align="center">
+
+[<img src="./app/src/main/res/drawable/bookup_branco.png" width="144"/>](https://github.com/DhiegoFernandes/PI5-BookUp)
+
+  <h1 align="center">BookUP</h1>
+
+  <p align="center">
+    <strong>BookUp é um aplicativo Android desenvolvido em Kotlin para auxiliar na organização, aprendizado e na promoção da leitura.</strong>
+  </p>
+
+[![pt-BR](https://img.shields.io/badge/lang-pt--BR-green.svg)](README.md)
+
+</div>
 
 ## Funcionalidades:
 
