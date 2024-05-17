@@ -19,7 +19,6 @@ import com.example.piandroid.view.LivroViewModel
 import com.example.piandroid.view.LivroViewModelFactory
 import com.google.android.material.snackbar.Snackbar
 
-
 class CadastroLivro : Fragment() {
 
     private var _binding: FragmentCadastroLivroBinding? = null
@@ -42,13 +41,12 @@ class CadastroLivro : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         val livroinfo = args.livro //INFORMACOES DO LIVRO
         loadLivro(livroinfo) //Carrega o livro nos campos de texto
         //Se livro não foi cadastrado
         if (binding.editNomeLivro.text.toString().isEmpty()) {
 
-            Snackbar.make(binding.root, "Livro NOVO", Snackbar.LENGTH_LONG).show()
+            //Snackbar.make(binding.root, "Livro NOVO", Snackbar.LENGTH_LONG).show()
 
             //Muda parametros do layout
             binding.txtPaginasLidas.visibility = View.INVISIBLE
@@ -65,7 +63,7 @@ class CadastroLivro : Fragment() {
                     val livro =
                         Livro(nome = nome, paginas = paginas.toInt(), paginasLidas = paginasLidas)
                     livroViewModel.inserirLivro(livro)
-                    Snackbar.make(binding.root, "Livro Cadastrado", Snackbar.LENGTH_LONG).show()
+                    Snackbar.make(binding.root, "Livro Cadastrado.", Snackbar.LENGTH_LONG).show()
                     // Navegar de volta à lista após a inserção
                     findNavController().popBackStack()
                 } else {
@@ -73,9 +71,8 @@ class CadastroLivro : Fragment() {
                         .show()
                 }
             }
-        } else { //Atualiza
-            Snackbar.make(binding.root, "Livro Já CADASTRADO", Snackbar.LENGTH_LONG).show()
-
+        } else { // ATUALIZA
+            //Snackbar.make(binding.root, "Livro Já CADASTRADO", Snackbar.LENGTH_LONG).show()
             //Muda parametros do layout
             binding.btnCadastrarLivro.setText("Atualizar")
             //Não deixa clicar
@@ -102,7 +99,7 @@ class CadastroLivro : Fragment() {
                             val livro = Livro(livroId, nome, paginasInt, paginasLidasInt)
                             livroViewModel.atualizarLivro(livro)
 
-                            Snackbar.make(binding.root, "Livro Atualizado", Snackbar.LENGTH_LONG)
+                            Snackbar.make(binding.root, "Livro Atualizado.", Snackbar.LENGTH_LONG)
                                 .show()
 
                             //Temp Lista não está atualizando
@@ -132,12 +129,8 @@ class CadastroLivro : Fragment() {
                     "atualizaLivro",
                     "Livro atualizado: Livro:" + livroId.toString() + " " + nome + " " + "lidas:" + paginasLidas.toInt() + " tot:" + paginas
                 )
-
             }
-
         }
-
-
     }
 
     private fun loadLivro(livro: Livro) {

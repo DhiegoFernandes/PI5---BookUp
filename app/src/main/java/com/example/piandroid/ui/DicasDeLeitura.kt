@@ -33,4 +33,9 @@ class DicasDeLeitura : Fragment() {
             findNavController().navigate(R.id.action_dicasDeLeitura_to_youGlish)
         }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

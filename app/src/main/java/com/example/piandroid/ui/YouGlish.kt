@@ -134,4 +134,9 @@ class YouGlish : Fragment() {
         webView.loadDataWithBaseURL(null, htmlContent, "text/html", "UTF-8", null)
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 }
