@@ -40,6 +40,9 @@
         <action
             android:id="@+id/action_global_dicasDeLeitura"
             app:destination="@id/dicasDeLeitura" />
+        <action
+            android:id="@+id/action_global_ajustes"
+            app:destination="@id/ajustes" />
     </navigation>
 
     <fragment
@@ -70,5 +73,10 @@
         android:name="com.example.piandroid.ui.YouGlish"
         android:label="fragment_you_glish"
         tools:layout="@layout/fragment_you_glish" />
+    <fragment
+        android:id="@+id/ajustes"
+        android:name="com.example.piandroid.ui.Ajustes"
+        android:label="fragment_ajustes"
+        tools:layout="@layout/fragment_ajustes" />
 
 </navigation>

@@ -40,7 +40,7 @@ class LivroListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //iniciaListeners()
+        iniciaListeners()
         val adapter = LivroAdapter(
             onEdit = { livro ->
                 // Ação quando o botão de editar é pressionado
