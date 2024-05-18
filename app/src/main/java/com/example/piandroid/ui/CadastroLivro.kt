@@ -56,10 +56,12 @@ class CadastroLivro : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentCadastroLivroBinding.inflate(inflater, container, false)
+
         val dao = AppDatabase.getDatabase(requireContext()).livroDao()
         val repository = LivroRepository(dao)
         val factory = LivroViewModelFactory(repository)
         livroViewModel = ViewModelProvider(this, factory).get(LivroViewModel::class.java)
+
         return binding.root
     }
 

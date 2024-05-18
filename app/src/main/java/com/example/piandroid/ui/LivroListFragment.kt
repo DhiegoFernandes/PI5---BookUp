@@ -1,9 +1,13 @@
 package com.example.piandroid.ui
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -30,10 +34,12 @@ class LivroListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentLivroListBinding.inflate(inflater, container, false)
+
         val dao = AppDatabase.getDatabase(requireContext()).livroDao()
         val repository = LivroRepository(dao)
         val factory = LivroViewModelFactory(repository)
         livroViewModel = ViewModelProvider(this, factory).get(LivroViewModel::class.java)
+
         return binding.root
     }
 
@@ -41,6 +47,28 @@ class LivroListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         iniciaListeners()
+
+
+  /*      binding.btnPesquisa.setOnClickListener {
+            val query = binding.editPesquisa.text.toString()
+            Toast.makeText(context, "$query", Toast.LENGTH_SHORT).show()
+            livroViewModel.procuraLivro(query).observe(viewLifecycleOwner) { livrosEncontrados ->
+                // Aqui você pode lidar com os livros encontrados
+                if (livrosEncontrados.isNotEmpty()) {
+                    // Por exemplo, você pode pegar o primeiro livro da lista
+                    val primeiroLivro = livrosEncontrados[0]
+                    // Agora você pode usar o ID do livro
+                    val idDoLivro = primeiroLivro.id
+                    Toast.makeText(context, "ID do livro: $idDoLivro", Toast.LENGTH_SHORT).show()
+                    // Ou fazer qualquer outra coisa com os dados do livro
+                    binding.txtTelaLivros.setText(primeiroLivro.toString())
+                } else {
+                    Toast.makeText(context, "Nenhum livro encontrado", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }*/
+
+
         val adapter = LivroAdapter(
             onEdit = { livro ->
                 // Ação quando o botão de editar é pressionado
@@ -59,20 +87,16 @@ class LivroListFragment : Fragment() {
         binding.recyclerViewLivros.apply {
             this.adapter = adapter
             layoutManager = LinearLayoutManager(context)
+            livroViewModel.todosLivros.observe(viewLifecycleOwner) { livros ->
+                adapter.submitList(livros)
+            }
         }
-
-
-        livroViewModel.todosLivros.observe(viewLifecycleOwner) { livros ->
-            adapter.submitList(livros)
-        }
-
     }
 
 
     private fun deleteUsuario(livro: Livro) {
         livroViewModel.deletarLivro(livro)
     }
-
 
 
     private fun iniciaListeners() {
@@ -95,6 +119,27 @@ class LivroListFragment : Fragment() {
             findNavController().navigate(action)
 
         }
+
+        //Pesquisa livro assim que algo é digitado
+        binding.editPesquisa.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // Não é necessário implementar este método neste caso
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // Chamada da função de pesquisa quando o texto é alterado
+                val query = s.toString()
+                livroViewModel.procuraLivro(query).observe(viewLifecycleOwner) { livros ->
+                    // Atualiza a RecyclerView com os livros pesquisados
+                    (binding.recyclerViewLivros.adapter as LivroAdapter).submitList(livros)
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                // Não é necessário implementar este método neste caso
+            }
+        })
+
         //Bottom Navigation Livros
         binding.bottomNavigationViewLivros.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
