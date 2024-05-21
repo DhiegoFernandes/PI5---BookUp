@@ -46,7 +46,7 @@
 
 
             <LinearLayout
-                android:layout_width="124dp"
+                android:layout_width="158dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
                 android:gravity="center"
@@ -69,10 +69,19 @@
                     android:backgroundTint="@color/white"
                     android:contentDescription="Deletar livro"
                     app:srcCompat="@drawable/ic_trash" />
+
+                <ImageButton
+                    android:id="@+id/imgFavorito"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:layout_weight="0"
+                    android:backgroundTint="@color/white"
+                    android:contentDescription="Favoritar livro"
+                    app:srcCompat="@drawable/ic_star" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="124dp"
+                android:layout_width="154dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
                 android:gravity="center"

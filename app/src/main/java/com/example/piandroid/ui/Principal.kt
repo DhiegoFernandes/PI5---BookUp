@@ -41,7 +41,7 @@ class Principal : Fragment() {
 
     private fun iniciarListeners(){
         binding.btnCadastrarLivro.setOnClickListener{
-            val livro = Livro(nome = "", paginas = 0, paginasLidas = 0)
+            val livro = Livro(nome = "", paginas = 0, paginasLidas = 0, favorito = 0)
 
             val action = LivroListFragmentDirections.actionGlobalCadastroLivro(livro)
             findNavController().navigate(action)

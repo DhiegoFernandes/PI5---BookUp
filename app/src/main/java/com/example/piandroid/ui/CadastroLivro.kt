@@ -25,6 +25,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.piandroid.R
+import com.example.piandroid.controller.LivroAdapter
 import com.example.piandroid.controller.Notification
 import com.example.piandroid.controller.channelID
 import com.example.piandroid.controller.mensagemExtra
@@ -89,9 +90,10 @@ class CadastroLivro : Fragment() {
                 val nome = binding.editNomeLivro.text.toString()
                 val paginas = binding.editPaginas.text.toString()
                 val paginasLidas = 0 //Por padrão começa em 0
+                val favorito = 0 //por padrão não é favorito
 
                 if (nome.isNotEmpty() && paginas.isNotEmpty()) {
-                    val livro = Livro(nome = nome, paginas = paginas.toInt(), paginasLidas = paginasLidas)
+                    val livro = Livro(nome = nome, paginas = paginas.toInt(), paginasLidas = paginasLidas, favorito = favorito)
                     livroViewModel.inserirLivro(livro)
                     Snackbar.make(binding.root, "Livro Cadastrado.", Snackbar.LENGTH_LONG).show()
                     marcarNotificacao()
@@ -120,6 +122,7 @@ class CadastroLivro : Fragment() {
                 val nome = binding.editNomeLivro.text.toString()
                 val paginas = binding.editPaginas.text.toString()
                 val paginasLidas = binding.editPaginasLidas.text.toString()
+                val favorito = livroinfo.favorito
 
                 if (nome.isNotEmpty() && paginas.isNotEmpty() && paginasLidas.isNotEmpty()) {
                     val paginasInt = paginas.toIntOrNull()
@@ -127,7 +130,7 @@ class CadastroLivro : Fragment() {
 
                     if (paginasInt != null && paginasLidasInt != null) {
                         if (paginasLidasInt <= paginasInt) {
-                            val livro = Livro(livroId, nome, paginasInt, paginasLidasInt)
+                            val livro = Livro(livroId, nome, paginasInt, paginasLidasInt, favorito)
                             livroViewModel.atualizarLivro(livro)
 
                             Snackbar.make(binding.root, "Livro Atualizado.", Snackbar.LENGTH_LONG)
