@@ -10,6 +10,7 @@ import kotlinx.coroutines.launch
 class LivroViewModel(private val repository: LivroRepository): ViewModel() {
 
     val todosLivros: LiveData<List<Livro>> = repository.todosLivros
+    val todosLivrosOrdPorFavoritos: LiveData<List<Livro>> = repository.todosLivrosOrdPorFavoritos
 
     fun inserirLivro(livro: Livro) = viewModelScope.launch {
         repository.inserirLivro(livro)
@@ -27,5 +28,14 @@ class LivroViewModel(private val repository: LivroRepository): ViewModel() {
     fun procuraLivro(query: String?) = repository.procuraLivro(query)
 
 
+    suspend fun marcarComoFavorito(livro: Livro) {
+        livro.favorito = 1
+        repository.atualizarLivro(livro)
+    }
+
+    suspend fun desmarcarComoFavorito(livro: Livro) {
+        livro.favorito = 0
+        repository.atualizarLivro(livro)
+    }
 
 }

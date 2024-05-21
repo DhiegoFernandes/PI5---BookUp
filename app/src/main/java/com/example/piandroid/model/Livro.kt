@@ -11,12 +11,14 @@ class Livro (
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val nome: String?,
     val paginas: Int?,
-    val paginasLidas: Int?
+    val paginasLidas: Int?,
+    var favorito: Int?
 
 ):Parcelable{
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
         parcel.readString(),
+        parcel.readInt(),
         parcel.readInt(),
         parcel.readInt()
     ) {
@@ -27,6 +29,7 @@ class Livro (
         parcel.writeString(nome)
         parcel.writeString(paginas.toString())
         parcel.writeString(paginasLidas.toString())
+        parcel.writeString(favorito.toString())
 
     }
 
@@ -45,8 +48,8 @@ class Livro (
     }
 
     override fun toString(): String {
-        return "Livro(id=$id, nome='$nome', paginas=$paginas, paginasLidas=$paginasLidas)"
+        return "Livro(id=$id, nome='$nome', paginas=$paginas, paginasLidas=$paginasLidas favorito=$favorito)"
     }
-    
+
 }
 annotation class Parcelize

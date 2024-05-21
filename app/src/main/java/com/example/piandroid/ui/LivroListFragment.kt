@@ -1,5 +1,6 @@
 package com.example.piandroid.ui
 
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -10,6 +11,7 @@ import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.piandroid.R
@@ -21,6 +23,7 @@ import com.example.piandroid.view.LivroRepository
 import com.example.piandroid.view.LivroViewModel
 import com.example.piandroid.view.LivroViewModelFactory
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.launch
 
 class LivroListFragment : Fragment() {
 
@@ -49,6 +52,7 @@ class LivroListFragment : Fragment() {
         iniciaListeners()
 
 
+
   /*      binding.btnPesquisa.setOnClickListener {
             val query = binding.editPesquisa.text.toString()
             Toast.makeText(context, "$query", Toast.LENGTH_SHORT).show()
@@ -71,6 +75,7 @@ class LivroListFragment : Fragment() {
 
         val adapter = LivroAdapter(
             onEdit = { livro ->
+                // TODO: POPUP ao inves de fragment 
                 // Ação quando o botão de editar é pressionado
                 val action = LivroListFragmentDirections.actionGlobalCadastroLivro(livro)
                 findNavController().navigate(action)
@@ -81,13 +86,26 @@ class LivroListFragment : Fragment() {
                 Snackbar.make(binding.root, "Gostaria de Deletar o Livro?", Snackbar.LENGTH_LONG)
                     .setAction("Confirmar") { deleteUsuario(livro) }
                     .show()
+            },
+            onFavorite = { livro ->
+                lifecycleScope.launch {//Assincrono
+                    // Obtenha o livro correspondente
+                    val livro = // Obtenha o livro correspondente
+                        if (livro.favorito == 0) {
+                            livroViewModel.marcarComoFavorito(livro)
+                            Toast.makeText(context, "Livro marcado como favorito", Toast.LENGTH_SHORT).show()
+                        } else {
+                            livroViewModel.desmarcarComoFavorito(livro)
+                            Toast.makeText(context, "Livro removido dos favoritos", Toast.LENGTH_SHORT).show()
+                        }
+                }
             }
         )
         //Inicia recyclerView
         binding.recyclerViewLivros.apply {
             this.adapter = adapter
             layoutManager = LinearLayoutManager(context)
-            livroViewModel.todosLivros.observe(viewLifecycleOwner) { livros ->
+            livroViewModel.todosLivrosOrdPorFavoritos.observe(viewLifecycleOwner) { livros ->
                 adapter.submitList(livros)
             }
         }
@@ -113,7 +131,7 @@ class LivroListFragment : Fragment() {
         //botao flutuante
         binding.floatingBtnAddLivro.setOnClickListener {
 
-            val livro = Livro(nome = "", paginas = 0, paginasLidas = 0)
+            val livro = Livro(nome = "", paginas = 0, paginasLidas = 0, favorito = 0)
 
             val action = LivroListFragmentDirections.actionGlobalCadastroLivro(livro)
             findNavController().navigate(action)
