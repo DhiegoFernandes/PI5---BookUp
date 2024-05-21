@@ -47,5 +47,6 @@ class Livro (
     override fun toString(): String {
         return "Livro(id=$id, nome='$nome', paginas=$paginas, paginasLidas=$paginasLidas)"
     }
+    
 }
 annotation class Parcelize

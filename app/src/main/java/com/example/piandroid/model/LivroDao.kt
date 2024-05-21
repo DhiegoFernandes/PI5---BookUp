@@ -22,7 +22,7 @@ interface LivroDao {
     @Query("SELECT * FROM livro")
     fun todosLivros(): LiveData<List<Livro>>
 
-    @Query("SELECT * FROM livro WHERE nome LIKE :query")
+    @Query("SELECT * FROM livro WHERE LOWER(nome) LIKE '%' || LOWER(:query) || '%'")
     fun procuraLivro(query: String?): LiveData<List<Livro>>
 
 

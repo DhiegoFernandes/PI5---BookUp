@@ -26,4 +26,6 @@ class LivroViewModel(private val repository: LivroRepository): ViewModel() {
     //fun todosLivros() = livroRepository.todosLivros()
     fun procuraLivro(query: String?) = repository.procuraLivro(query)
 
+
+
 }
