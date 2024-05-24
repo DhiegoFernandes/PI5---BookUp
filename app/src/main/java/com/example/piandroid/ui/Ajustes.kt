@@ -5,6 +5,7 @@ import android.app.AlertDialog
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
+import android.app.TimePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -14,8 +15,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.app.NotificationManagerCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
+import com.example.piandroid.R
 import com.example.piandroid.controller.Notification
 import com.example.piandroid.controller.channelID
 import com.example.piandroid.controller.mensagemExtra
@@ -54,45 +57,66 @@ class Ajustes : Fragment() {
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        updatePermissionStatus()
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //  ADICIONAR O GERENCIAMENTO DE HORARIO DE NOTIFICACOES
 
         iniciaListeners()
+        updatePermissionStatus()
 
-
-
-
-        // TODO: pegar o livro[0] prioridade e criar a notificacao diaria baseada nele
         binding.btnAtualizaAlarme.setOnClickListener {
-            livroViewModel.todosLivrosOrdPorFavoritos.observe(viewLifecycleOwner) { livrosEncontrados ->
-                if (livrosEncontrados.isNotEmpty()) {
-                    //pegar o primeiro livro da lista
-                    val primeiroLivro = livrosEncontrados[0]
+            val selectedRadioButtonId = binding.radioGroupPeriodos.checkedRadioButtonId
 
-//                    val idLivro = primeiroLivro.id
-//                    val nomeLivro = primeiroLivro.nome
-//                    val paginaLivro = primeiroLivro.paginas
-//                    val paginasLidas = primeiroLivro.paginasLidas
-//                    val favorito = primeiroLivro.favorito
+            val periodoSelecionado = when (selectedRadioButtonId) {
+                R.id.rdbManha -> "8"
+                R.id.rdbTarde -> "14"
+                R.id.rdbNoite -> "18"
+                else -> ""
+            }
 
-                    val hora = binding.editHora.text.toString().toInt()
-                    val minuto = binding.editMinuto.text.toString().toInt()
+            if (periodoSelecionado.isNotEmpty()) {
+                livroViewModel.todosLivrosOrdPorFavoritos.observe(viewLifecycleOwner) { livrosEncontrados ->
+                    if (livrosEncontrados.isNotEmpty()) {
+                        //pega o primeiro livro da lista
+                        val primeiroLivro = livrosEncontrados[0]
 
-                    val nomeLivro = primeiroLivro.nome ?: "Livro"
-                    scheduleDailyNotification(nomeLivro, "Continue lendo $nomeLivro!", hora, minuto)
-                    Toast.makeText(context, "Notificação agendada para $nomeLivro", Toast.LENGTH_SHORT).show()
+                        val hora = periodoSelecionado.toInt()
+                        val minuto = "00".toInt()
 
-                    //Toast.makeText(context, "ID: $idLivro Nome: $nomeLivro P:$paginasLidas R:$paginaLivro" , Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(context, "Nenhum livro encontrado", Toast.LENGTH_SHORT).show()
+                        val paginas = primeiroLivro.paginas
+                        val paginasLidas = primeiroLivro.paginasLidas
+                        val nomeLivro = primeiroLivro.nome ?: "Livro"
+                        val titulo = "Chegou a hora de ler ${primeiroLivro.nome}!"
+                        val mensagem = "Não esqueça de atualizar as páginas que você já leu! ($paginasLidas/$paginas)"
+
+                        marcarNotificacaoDiaria(nomeLivro, mensagem, hora, minuto)
+
+                        AlertDialog.Builder(context)
+                            .setTitle("Horário de notificações alterado!")
+                            .setMessage(
+                                "Próxima Notificação: " + titulo +
+                                        "\nMensagem: " + mensagem +
+                                        "\nHorário: " + hora + ":" + "00"
+                            )
+                            .setPositiveButton("Ok!") { _, _ -> }
+                            .show()
+
+                        //Toast.makeText(context, "ID: $idLivro Nome: $nomeLivro P:$paginasLidas R:$paginaLivro" , Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(context, "Cadastre um livro antes de receber notificações personalizadas!", Toast.LENGTH_SHORT).show()
+                    }
                 }
+            } else {
+                // Caso nenhum período seja selecionado
+                Toast.makeText(context, "Escolha um período para receber notificações personalizadas!", Toast.LENGTH_SHORT).show()
             }
         }
-
-
-
     }
+
 
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -107,7 +131,7 @@ class Ajustes : Fragment() {
         }
     }
 
-    private fun scheduleDailyNotification(title: String, message: String, hora: Int, minuto: Int) {
+    private fun marcarNotificacaoDiaria(title: String, message: String, hora: Int, minuto: Int) {
         val intent = Intent(requireContext(), Notification::class.java).apply {
             putExtra(tituloExtra, title)
             putExtra(mensagemExtra, message)
@@ -140,14 +164,40 @@ class Ajustes : Fragment() {
         )
     }
 
-
-
-    private fun iniciaListeners(){
-        //Pedir permissoes
-        binding.btnPermissao.setOnClickListener {
-            val intent = Intent(android.provider.Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM)
-            startActivity(intent)
+    private fun pedirPermissao(){
+        val intent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            Intent(android.provider.Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM)
+        } else {
+            Intent(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS).apply {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    putExtra(android.provider.Settings.EXTRA_APP_PACKAGE, requireContext().packageName)
+                }
+            }
         }
+        startActivity(intent)
+    }
+
+    private fun updatePermissionStatus() {
+        val notificationManager = NotificationManagerCompat.from(requireContext())
+        val hasNotificationPermission = notificationManager.areNotificationsEnabled()
+
+        if (hasNotificationPermission) {
+            binding.txtPermitiu.text = "Concedida."
+            binding.switch1.isChecked = true
+        } else {
+            binding.txtPermitiu.text = "Negada."
+            binding.switch1.isChecked = false
+        }
+    }
+
+    private fun iniciaListeners() {
+        //Pedir permissoes
+
+        binding.switch1.setOnClickListener{
+            pedirPermissao()
+        }
+
+
 
 
     }

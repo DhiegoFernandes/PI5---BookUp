@@ -43,6 +43,9 @@
         <action
             android:id="@+id/action_global_ajustes"
             app:destination="@id/ajustes" />
+        <action
+            android:id="@+id/action_global_popUpFragmentAtualiza2"
+            app:destination="@id/popUpFragmentAtualiza" />
     </navigation>
 
     <fragment
@@ -78,5 +81,14 @@
         android:name="com.example.piandroid.ui.Ajustes"
         android:label="fragment_ajustes"
         tools:layout="@layout/fragment_ajustes" />
+    <dialog
+        android:id="@+id/popUpFragmentAtualiza"
+        android:name="com.example.piandroid.ui.PopUpFragmentAtualiza"
+        android:label="fragment_pop_up_atualiza"
+        tools:layout="@layout/fragment_pop_up_atualiza">
+    <argument
+        android:name="livro"
+        app:argType="com.example.piandroid.model.Livro" />
+    </dialog>
 
 </navigation>

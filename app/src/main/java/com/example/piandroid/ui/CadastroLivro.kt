@@ -20,7 +20,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -70,105 +72,50 @@ class CadastroLivro : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val livroinfo = args.livro //INFORMACOES DO LIVRO
+
         //Carrega o livro nos campos de texto
         binding.editNomeLivro.setText(livroinfo.nome)
         binding.editPaginas.setText(livroinfo.paginas.toString())
-        binding.editPaginasLidas.setText(livroinfo.paginasLidas.toString())
 
         createNotificationChannel() //cria canal de notificações
 
+        binding.btnCadastrarLivro.setOnClickListener {
+            val nome = binding.editNomeLivro.text.toString()
+            val paginas = binding.editPaginas.text.toString()
+            val paginasLidas = 0 //Por padrão começa em 0
+            val favorito = 0 //por padrão não é favorito
 
-
-
-        if (binding.editNomeLivro.text.toString().isEmpty()) { //Se livro não foi cadastrado
-            //Muda parametros do layout
-            binding.txtPaginasLidas.visibility = View.INVISIBLE
-            binding.editPaginasLidas.visibility = View.INVISIBLE
-
-            binding.btnCadastrarLivro.setOnClickListener {
-
-                val nome = binding.editNomeLivro.text.toString()
-                val paginas = binding.editPaginas.text.toString()
-                val paginasLidas = 0 //Por padrão começa em 0
-                val favorito = 0 //por padrão não é favorito
-
-                if (nome.isNotEmpty() && paginas.isNotEmpty()) {
-                    val livro = Livro(nome = nome, paginas = paginas.toInt(), paginasLidas = paginasLidas, favorito = favorito)
+            if (nome.isNotEmpty() && paginas.isNotEmpty()) {
+                //Livro deve ter uma página (>0)
+                if (paginas.toInt() > 0) {
+                    val livro = Livro(
+                        nome = nome,
+                        paginas = paginas.toInt(),
+                        paginasLidas = paginasLidas,
+                        favorito = favorito
+                    )
                     livroViewModel.inserirLivro(livro)
                     Snackbar.make(binding.root, "Livro Cadastrado.", Snackbar.LENGTH_LONG).show()
+
                     marcarNotificacao()
+
                     // Navegar de volta à lista após a inserção
                     findNavController().popBackStack()
                 } else {
-                    Snackbar.make(binding.root, "Preencha todos os campos", Snackbar.LENGTH_LONG)
+                    Snackbar.make(
+                        binding.root,
+                        "O livro deve ter pelo menos uma página.",
+                        Snackbar.LENGTH_LONG
+                    )
                         .show()
                 }
-            }
-        } else { // ATUALIZA
-            //Snackbar.make(binding.root, "Livro Já CADASTRADO", Snackbar.LENGTH_LONG).show()
-            //Muda parametros do layout
-            binding.btnCadastrarLivro.setText("Atualizar")
-            //Não deixa clicar
-            binding.editPaginas.isFocusable = false
-            binding.editPaginas.isFocusableInTouchMode = false
-            binding.editPaginas.isClickable = false
-            //Muda cor
-            binding.editPaginas.setBackgroundColor(Color.parseColor("#393939"))
-            binding.editPaginas.setTextColor(Color.parseColor("#fefefe"))
-
-            binding.btnCadastrarLivro.setOnClickListener {
-
-                val livroId = livroinfo.id
-                val nome = binding.editNomeLivro.text.toString()
-                val paginas = binding.editPaginas.text.toString()
-                val paginasLidas = binding.editPaginasLidas.text.toString()
-                val favorito = livroinfo.favorito
-
-                if (nome.isNotEmpty() && paginas.isNotEmpty() && paginasLidas.isNotEmpty()) {
-                    val paginasInt = paginas.toIntOrNull()
-                    val paginasLidasInt = paginasLidas.toIntOrNull()
-
-                    if (paginasInt != null && paginasLidasInt != null) {
-                        if (paginasLidasInt <= paginasInt) {
-                            val livro = Livro(livroId, nome, paginasInt, paginasLidasInt, favorito)
-                            livroViewModel.atualizarLivro(livro)
-
-                            Snackbar.make(binding.root, "Livro Atualizado.", Snackbar.LENGTH_LONG)
-                                .show()
-
-                            marcarNotificacao()
-
-                            //Temp Lista não está atualizando
-                            findNavController().popBackStack()
-                            findNavController().popBackStack()
-                            findNavController().navigate(R.id.action_principal_to_livros)
-                        } else {
-                            Snackbar.make(
-                                binding.root,
-                                "Páginas Lidas não pode ser maior que a quantidade de páginas do livro",
-                                Snackbar.LENGTH_LONG
-                            ).show()
-                        }
-                    } else {
-                        Snackbar.make(
-                            binding.root,
-                            "Os campos de páginas e páginas lidas devem ser números válidos",
-                            Snackbar.LENGTH_LONG
-                        ).show()
-                    }
-                } else {
-                    Snackbar.make(binding.root, "Preencha todos os campos", Snackbar.LENGTH_LONG)
-                        .show()
-                }
-                //teste
-                Log.d(
-                    "atualizaLivro",
-                    "Livro atualizado: Livro:" + livroId.toString() + " " + nome + " " + "lidas:" + paginasLidas.toInt() + " tot:" + paginas
-                )
+            } else {
+                Snackbar.make(binding.root, "Preencha todos os campos.", Snackbar.LENGTH_LONG)
+                    .show()
             }
         }
-    }
 
+    }
 
 
     private fun marcarNotificacao() {
@@ -176,10 +123,10 @@ class CadastroLivro : Fragment() {
         val intent = Intent(context, Notification::class.java)//classe notification
 
         var nomeLivro = binding.editNomeLivro.text.toString()
-        var paginasLidas = binding.editPaginasLidas.text.toString()
+       // var paginasLidas = binding.editPaginasLidas.text.toString()
         var paginas = binding.editPaginas.text.toString()
         val title = "Chegou a hora de ler $nomeLivro!"
-        val message = "Não esqueça de atualizar as páginas que você já leu! ($paginasLidas/$paginas)"
+        val message = "Não esqueça de atualizar as páginas que você já leu! ($/$paginas)"
         intent.putExtra(tituloExtra, title)//Envia titulo para a classe notification
         intent.putExtra(mensagemExtra, message)//Envia mensagem para a classe notification
 
@@ -201,7 +148,11 @@ class CadastroLivro : Fragment() {
             )
             exibeNotificacao(time, title, message)
         } catch (e: SecurityException) {
-            Toast.makeText(context, "Não foi possível agendar a notificação. Por favor conceda as permissões necessárias.", Toast.LENGTH_LONG).show()
+            Toast.makeText(
+                context,
+                "Não foi possível agendar a notificação. Por favor conceda as permissões necessárias.",
+                Toast.LENGTH_LONG
+            ).show()
             pedirPermissaoExactAlarm()
         }
     }
@@ -214,7 +165,8 @@ class CadastroLivro : Fragment() {
         //val date = LocalTime.now().plusHours(24)//hora atual mais 24 hora atual
         //binding.textView911.setText(date.toString())
 
-        val calendar = Calendar.getInstance() // Obtém uma instância do calendário com a data e hora atuais
+        val calendar =
+            Calendar.getInstance() // Obtém uma instância do calendário com a data e hora atuais
         calendar.add(Calendar.HOUR_OF_DAY, 24) // Adiciona 24 horas à data e hora atuais
 
         return calendar.timeInMillis // Retorna o tempo em milissegundos
@@ -235,8 +187,9 @@ class CadastroLivro : Fragment() {
             .setMessage(
                 "Titulo: " + title +
                         "\nMensagem: " + message +
-                        "\nData: " + dateFormat.format(date) + " " + timeFormat.format(date))
-            .setPositiveButton("Okay!"){_,_ ->}
+                        "\nData: " + dateFormat.format(date) + " " + timeFormat.format(date)
+            )
+            .setPositiveButton("Okay!") { _, _ -> }
             .show()
     }
 
@@ -248,7 +201,8 @@ class CadastroLivro : Fragment() {
             val importance = NotificationManager.IMPORTANCE_DEFAULT
             val channel = NotificationChannel(channelID, name, importance)
             channel.description = desc
-            val notificationManager = requireContext().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            val notificationManager =
+                requireContext().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)
         }
     }
