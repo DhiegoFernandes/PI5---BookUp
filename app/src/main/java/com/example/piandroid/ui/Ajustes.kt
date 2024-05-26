@@ -18,6 +18,8 @@ import android.widget.Toast
 import androidx.core.app.NotificationManagerCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
+import com.airbnb.lottie.LottieAnimationView
+import com.airbnb.lottie.LottieDrawable
 import com.example.piandroid.R
 import com.example.piandroid.controller.Notification
 import com.example.piandroid.controller.channelID
@@ -68,7 +70,20 @@ class Ajustes : Fragment() {
         iniciaListeners()
         updatePermissionStatus()
 
+        binding.lottieAnimationView.setMinProgress(0.0f)
+        binding.lottieAnimationView.setMaxProgress(1.0f)
+        binding.lottieAnimationView.repeatCount = 3
+        binding.lottieAnimationView.repeatMode = LottieDrawable.RESTART
+        binding.lottieAnimationView.playAnimation()
+
+        binding.animacaoNotificacao.setMinProgress(0.0f)
+        binding.animacaoNotificacao.setMaxProgress(1.0f)
+        binding.animacaoNotificacao.repeatCount = 3
+        binding.animacaoNotificacao.repeatMode = LottieDrawable.RESTART
+        binding.animacaoNotificacao.playAnimation()
+
         binding.btnAtualizaAlarme.setOnClickListener {
+
             val selectedRadioButtonId = binding.radioGroupPeriodos.checkedRadioButtonId
 
             val periodoSelecionado = when (selectedRadioButtonId) {

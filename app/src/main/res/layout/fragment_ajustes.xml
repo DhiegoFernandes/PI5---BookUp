@@ -6,9 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".ui.Ajustes"
     android:orientation="vertical"
-    android:padding="22dp">
+    android:padding="22dp"
+    tools:context=".ui.Ajustes">
 
 
     <ScrollView
@@ -18,17 +18,36 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:text="Notificações"
-                android:textColor="@color/white"
-                android:textSize="28dp"
-                android:textStyle="bold" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginBottom="12dp">
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Notificações"
+                    android:textColor="@color/white"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/animacaoNotificacao"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_rawRes="@raw/notification" />
+
+
+            </LinearLayout>
+
+
 
             <TextView
                 android:id="@+id/textView10"
@@ -49,8 +68,8 @@
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="@drawable/bordercurve">
+                    android:background="@drawable/bordercurve"
+                    android:orientation="vertical">
 
                     <com.google.android.material.switchmaterial.SwitchMaterial
                         android:id="@+id/switch1"
@@ -58,12 +77,12 @@
                         android:layout_height="wrap_content"
 
                         android:button="@color/azul"
+                        android:paddingTop="8dp"
                         android:text="Lembretes para praticar"
                         android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:paddingTop="8dp"/>
+                        android:textStyle="bold" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -97,15 +116,32 @@
 
             </androidx.cardview.widget.CardView>
 
-            <TextView
-                android:id="@+id/textView11"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:text="Horário de Leitura"
-                android:textColor="@color/white"
-                android:textSize="28dp"
-                android:textStyle="bold" />
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp">
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Horário de Leitura"
+                    android:textColor="@color/white"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/lottieAnimationView"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_rawRes="@raw/time" />
+
+            </LinearLayout>
+
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView"
@@ -164,6 +200,7 @@
 
             </androidx.cardview.widget.CardView>
 
+
             <Button
                 android:id="@+id/btnAtualizaAlarme"
                 android:layout_width="fill_parent"
@@ -172,6 +209,7 @@
                 android:text="Atualizar horário"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
+
         </LinearLayout>
     </ScrollView>
 
