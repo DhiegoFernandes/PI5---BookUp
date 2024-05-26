@@ -53,7 +53,8 @@
                 android:src="@drawable/novo_livro"
                 app:shapeAppearanceOverlay="@style/circular10"
                 app:strokeColor="@color/azul"
-                app:strokeWidth="5dp" />
+                app:strokeWidth="5dp"
+                android:contentDescription="Novo Livro"/>
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/btnMeusLivros"
@@ -66,7 +67,8 @@
                 android:src="@drawable/meus_livros"
                 app:shapeAppearanceOverlay="@style/circular10"
                 app:strokeColor="@color/azul"
-                app:strokeWidth="5dp" />
+                app:strokeWidth="5dp"
+                android:contentDescription="Meus livros"/>
         </LinearLayout>
 
         <LinearLayout
@@ -86,7 +88,8 @@
                 android:src="@drawable/dicas"
                 app:shapeAppearanceOverlay="@style/circular10"
                 app:strokeColor="@color/azul"
-                app:strokeWidth="5dp" />
+                app:strokeWidth="5dp"
+                android:contentDescription="Dicas"/>
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/btnAjustes"
@@ -100,7 +103,8 @@
                 android:src="@drawable/ajustes"
                 app:shapeAppearanceOverlay="@style/circular10"
                 app:strokeColor="@color/azul"
-                app:strokeWidth="5dp" />
+                app:strokeWidth="5dp"
+                android:contentDescription="Ajustes"/>
         </LinearLayout>
 
     </LinearLayout>

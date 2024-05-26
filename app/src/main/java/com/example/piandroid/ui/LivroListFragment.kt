@@ -1,6 +1,5 @@
 package com.example.piandroid.ui
 
-import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -8,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.widget.doOnTextChanged
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -48,11 +47,6 @@ class LivroListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        iniciaListeners()
-
-
-
   /*      binding.btnPesquisa.setOnClickListener {
             val query = binding.editPesquisa.text.toString()
             Toast.makeText(context, "$query", Toast.LENGTH_SHORT).show()
@@ -72,12 +66,12 @@ class LivroListFragment : Fragment() {
             }
         }*/
 
+        iniciaListeners()
 
         val adapter = LivroAdapter(
             onEdit = { livro ->
-                // TODO: POPUP ao inves de fragment 
-                // Ação quando o botão de editar é pressionado
-                val action = LivroListFragmentDirections.actionGlobalCadastroLivro(livro)
+                // TODO: POPUP ao inves de fragment
+                val action = LivroListFragmentDirections.actionGlobalPopUpFragmentAtualiza2(livro)
                 findNavController().navigate(action)
 
             },
@@ -123,12 +117,16 @@ class LivroListFragment : Fragment() {
         val livroItem = menu.findItem(R.id.btnLivros)
         livroItem.isChecked = true
 
-        binding.recyclerViewLivros.apply {
+
+        //Inicia recyclerview dup
+       /*
+       binding.recyclerViewLivros.apply {
             this.adapter = adapter
             layoutManager = LinearLayoutManager(context)
         }
+        */
 
-        //botao flutuante
+        //Botao flutuante
         binding.floatingBtnAddLivro.setOnClickListener {
 
             val livro = Livro(nome = "", paginas = 0, paginasLidas = 0, favorito = 0)
