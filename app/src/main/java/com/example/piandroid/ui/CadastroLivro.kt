@@ -71,12 +71,6 @@ class CadastroLivro : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val livroinfo = args.livro //INFORMACOES DO LIVRO
-
-        //Carrega o livro nos campos de texto
-        binding.editNomeLivro.setText(livroinfo.nome)
-        binding.editPaginas.setText(livroinfo.paginas.toString())
-
         createNotificationChannel() //cria canal de notificações
 
         binding.btnCadastrarLivro.setOnClickListener {
@@ -126,7 +120,7 @@ class CadastroLivro : Fragment() {
        // var paginasLidas = binding.editPaginasLidas.text.toString()
         var paginas = binding.editPaginas.text.toString()
         val title = "Chegou a hora de ler $nomeLivro!"
-        val message = "Não esqueça de atualizar as páginas que você já leu! ($/$paginas)"
+        val message = "Não esqueça de atualizar as páginas que você já leu! (0/$paginas)"
         intent.putExtra(tituloExtra, title)//Envia titulo para a classe notification
         intent.putExtra(mensagemExtra, message)//Envia mensagem para a classe notification
 
@@ -183,11 +177,11 @@ class CadastroLivro : Fragment() {
         val timeFormat = android.text.format.DateFormat.getTimeFormat(context)
 
         AlertDialog.Builder(context)
-            .setTitle("Notificação agendada!")
+            .setTitle("Lembrete agendado!")
             .setMessage(
                 "Titulo: " + title +
                         "\nMensagem: " + message +
-                        "\nData: " + dateFormat.format(date) + " " + timeFormat.format(date)
+                        "\nLembrete dinamico marcado para: " + dateFormat.format(date) + " " + timeFormat.format(date)
             )
             .setPositiveButton("Okay!") { _, _ -> }
             .show()

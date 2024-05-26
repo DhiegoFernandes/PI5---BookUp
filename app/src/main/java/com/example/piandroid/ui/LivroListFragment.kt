@@ -77,7 +77,7 @@ class LivroListFragment : Fragment() {
             },
             onDelete = { livro ->
                 // Ação quando o botão de deletar é pressionado
-                Snackbar.make(binding.root, "Gostaria de Deletar o Livro?", Snackbar.LENGTH_LONG)
+                Snackbar.make(binding.root, "Gostaria de Deletar o Livro ${livro.nome}?", Snackbar.LENGTH_LONG)
                     .setAction("Confirmar") { deleteUsuario(livro) }
                     .show()
             },
