@@ -3,7 +3,14 @@
     <style name="Base.Theme.PIAndroid" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/azul</item>
+        <item name="colorPrimaryVariant">@color/azulEscuro</item>
+        <item name="colorSecondary">@color/black</item>
     </style>
 
     <style name="Theme.PIAndroid" parent="Base.Theme.PIAndroid" />
+
+    <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/white</item>
+    </style>
 </resources>

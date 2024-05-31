@@ -1,0 +1,432 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.Literatura">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <!-- Seção de Dicas de Leitura de Ficção -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Expanda sua biblioteca"
+            android:textAlignment="center"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/custom_textview"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ficção"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:padding="8dp"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1. Harry Potter e a Pedra Filosofal"
+            android:textStyle="bold"
+            android:paddingLeft="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   - Autor: J.K. Rowling"
+            android:paddingLeft="32dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   - Uma história emocionante sobre um jovem bruxo que descobre seu destino na Escola de Magia e Bruxaria de Hogwarts."/>
+
+        <!-- Adicione mais recomendações de ficção aqui -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2. As Crônicas de Nárnia: O Leão, a Feiticeira e o Guarda-Roupa"
+            android:textStyle="bold"
+            android:paddingLeft="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   - Autor: C.S. Lewis"
+            android:paddingLeft="32dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   - Aventuras mágicas de quatro crianças em um mundo de fantasia."/>
+
+        <!-- Adicione mais recomendações de ficção aqui -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="3. O Pequeno Príncipe"
+            android:textStyle="bold"
+            android:paddingLeft="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   - Autor: Antoine de Saint-Exupéry"
+            android:paddingLeft="32dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   - A história de um pequeno príncipe que viaja entre planetas e aprende lições valiosas sobre amor e amizade."/>
+
+        <!-- Seção de Dicas de Leitura de Fantasia -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fantasia"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:padding="8dp"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1. Percy Jackson e os Olimpianos"
+            android:textStyle="bold"
+            android:paddingLeft="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   - Autor: Rick Riordan"
+            android:paddingLeft="32dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   - Aventuras de um jovem semideus, filho de Poseidon, em uma jornada para salvar o mundo dos deuses gregos."/>
+
+        <!-- Adicione mais recomendações de fantasia aqui -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2. O Senhor dos Anéis: A Sociedade do Anel"
+            android:textStyle="bold"
+            android:paddingLeft="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   - Autor: J.R.R. Tolkien"
+            android:paddingLeft="32dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   - Uma jornada épica para destruir um poderoso anel e salvar a Terra Média."/>
+
+        <!-- Adicione mais recomendações de fantasia aqui -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="3. Coraline"
+            android:textStyle="bold"
+            android:paddingLeft="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   - Autor: Neil Gaiman"
+            android:paddingLeft="32dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   - Uma menina descobre uma porta secreta em sua casa que leva a um mundo sinistro e perturbador."/>
+
+        <!-- Seção de Dicas de Leitura de Mistério -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mistério"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:padding="8dp"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1. O Mistério do Cinco Estrelas"
+            android:textStyle="bold"
+            android:paddingLeft="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   - Autor: Marcos Rey"
+            android:paddingLeft="32dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   - Uma história envolvente sobre um mistério de assassinato em um hotel de luxo."/>
+
+        <!-- Adicione mais recomendações de mistério aqui -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2. O Caso dos Dez Negrinhos"
+            android:textStyle="bold"
+            android:paddingLeft="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   - Autor: Agatha Christie"
+            android:paddingLeft="32dp"/>
+
+        <!-- Seção de Dicas de Leitura de Aventura -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Aventura"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:padding="8dp"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1. A Ilha do Tesouro"
+            android:textStyle="bold"
+            android:paddingLeft="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   - Autor: Robert Louis Stevenson"
+            android:paddingLeft="32dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   - A clássica história de piratas e caça ao tesouro."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2. As Aventuras de Tom Sawyer"
+            android:textStyle="bold"
+            android:paddingLeft="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   - Autor: Mark Twain"
+            android:paddingLeft="32dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   - A vida e as aventuras de um menino travesso às margens do rio Mississippi."/>
+
+        <!-- Seção de Dicas de Leitura de Clássicos -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Clássicos"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:padding="8dp"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1. Alice no País das Maravilhas"
+            android:textStyle="bold"
+            android:paddingLeft="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   - Autor: Lewis Carroll"
+            android:paddingLeft="32dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   - A fantástica aventura de Alice em um mundo mágico e estranho."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2. Peter Pan"
+            android:textStyle="bold"
+            android:paddingLeft="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   - Autor: J.M. Barrie"
+            android:paddingLeft="32dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   - As aventuras de um menino que nunca cresce na mágica Terra do Nunca."/>
+
+        <!-- Seção de Dicas de Leitura de Histórias em Quadrinhos -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Histórias em Quadrinhos"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:padding="8dp"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1. Turma da Mônica"
+            android:textStyle="bold"
+            android:paddingLeft="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   - Autor: Mauricio de Sousa"
+            android:paddingLeft="32dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   - Histórias divertidas e emocionantes de Mônica, Cebolinha e seus amigos."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2. Calvin e Haroldo"
+            android:textStyle="bold"
+            android:paddingLeft="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   - Autor: Bill Watterson"
+            android:paddingLeft="32dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   - As hilárias aventuras de um menino e seu tigre de pelúcia."/>
+
+        <!-- Seção de Dicas de Leitura de Contos de Fadas -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Contos de Fadas"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:padding="8dp"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1. Branca de Neve"
+            android:textStyle="bold"
+            android:paddingLeft="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   - Autor: Irmãos Grimm"
+            android:paddingLeft="32dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   - A clássica história da princesa que é protegida por sete anões."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2. Cinderela"
+            android:textStyle="bold"
+            android:paddingLeft="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   - Autor: Charles Perrault"
+            android:paddingLeft="32dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   - A história da garota maltratada por sua madrasta que se torna princesa."/>
+
+        <!-- Seção de Dicas de Leitura de Ficção Científica -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ficção Científica"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:padding="8dp"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1. Uma Dobra no Tempo"
+            android:textStyle="bold"
+            android:paddingLeft="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   - Autor: Madeleine L'Engle"
+            android:paddingLeft="32dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   - A incrível aventura de crianças que viajam através do tempo e espaço para salvar seu pai."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2. Ender's Game: O Jogo do Exterminador"
+            android:textStyle="bold"
+            android:paddingLeft="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   - Autor: Orson Scott Card"
+            android:paddingLeft="32dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   - Um jovem gênio é treinado para se tornar o comandante de uma guerra contra uma raça alienígena."/>
+
+    </LinearLayout>
+</ScrollView>
+

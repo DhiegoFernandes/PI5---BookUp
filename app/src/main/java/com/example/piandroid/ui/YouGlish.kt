@@ -10,6 +10,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Button
 import android.widget.EditText
+import androidx.navigation.fragment.findNavController
 import com.example.piandroid.R
 import com.example.piandroid.databinding.FragmentYouGlishBinding
 
@@ -24,15 +25,10 @@ class YouGlish : Fragment() {
     private lateinit var searchInput: EditText
     private lateinit var searchButton: Button
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflar o layout deste fragmento
         _binding = FragmentYouGlishBinding.inflate(inflater, container, false)
         val view = binding.root
 
@@ -64,6 +60,13 @@ class YouGlish : Fragment() {
         }
 
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.btnVoltarYouglish.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     private fun loadYouGlishWidget(query: String, lingua: String) {
