@@ -1,6 +1,4 @@
 <br>
-# BookUp
-
 <div align="center">
 
 [<img src="./app/src/main/res/drawable/bookuplogo.png" width="144"/>](https://github.com/DhiegoFernandes/PI5-BookUp)
@@ -38,7 +36,7 @@ git clone git@github.com:DhiegoFernandes/PI5-BookUp.git
 ```
 
 ## APK:
-A ser disponibilizado.
+[BookUP GoogleDrive](https://drive.google.com/file/d/1uT2eFeT5DpGIxRQyapdJjW-sC7LDqxzQ/view?usp=sharing)
 
 ## Contribuidores:
 
