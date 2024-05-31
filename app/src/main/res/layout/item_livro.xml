@@ -5,125 +5,138 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="5dp"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:id="@+id/layoutItem"
+    >
 
-
-    <androidx.cardview.widget.CardView
+    <LinearLayout
+        android:id="@+id/frameLayoutAtras"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="18dp"
-        android:layout_marginRight="18dp"
-        android:layout_marginBottom="12dp"
-        android:backgroundTint="@color/azul"
-        android:textColor="@color/white"
-        app:cardCornerRadius="32dp">
+        android:gravity="center">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/txtIdLivro"
-                android:layout_width="29dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:text="ID"
-                android:textColor="@color/black"
-                android:textSize="8dp" />
-
-            <TextView
-                android:id="@+id/txtNomeLivro"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:gravity="center"
-                android:text="Harry Potter e o Cálice de Fogo"
-                android:textAlignment="center"
-                android:textColor="@color/black" />
-
-
-            <LinearLayout
-                android:layout_width="158dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageButton
-                    android:id="@+id/imgBtnEditar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:layout_weight="0"
-                    android:backgroundTint="@color/white"
-                    android:contentDescription="Editar livro"
-                    app:srcCompat="@drawable/ic_edit" />
-
-                <ImageButton
-                    android:id="@+id/imgBtnDeletar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:layout_weight="0"
-                    android:backgroundTint="@color/white"
-                    android:contentDescription="Deletar livro"
-                    app:srcCompat="@drawable/ic_trash" />
-
-                <ImageButton
-                    android:id="@+id/imgFavorito"
-                    android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:layout_weight="0"
-                    android:backgroundTint="@color/white"
-                    android:contentDescription="Favoritar livro"
-                    app:srcCompat="@drawable/ic_star" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="154dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/txtPaginasLidas"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:text="pgsRestantes"
-                    android:textColor="@color/black" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:text="/"
-                    android:textColor="@color/black" />
-
-                <TextView
-                    android:id="@+id/txtPaginas"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:text="pgs"
-                    android:textColor="@color/black" />
-
-            </LinearLayout>
-
-            <ProgressBar
-                android:id="@+id/progressBar"
-                style="?android:attr/progressBarStyleHorizontal"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewItem"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:layout_weight="0"
-                android:progressTint="@color/white" />
+                android:layout_height="match_parent"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
+                android:backgroundTint="@color/azul"
+                app:cardCornerRadius="32dp">
 
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtIdLivro"
+                        android:layout_width="29dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:text="ID"
+                        android:textColor="@color/black"
+                        android:textSize="8dp"
+                        android:visibility="gone"/>
+
+                    <TextView
+                        android:id="@+id/txtNomeLivro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:gravity="center"
+                        android:text="Harry Potter e o Cálice de Fogo"
+                        android:textSize="18sp"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:paddingTop="8dp"/>
+
+
+                    <LinearLayout
+                        android:layout_width="158dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/imgBtnEditar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="48dp"
+                            android:layout_weight="0"
+                            android:backgroundTint="@color/white"
+                            android:contentDescription="Editar livro"
+                            app:srcCompat="@drawable/ic_edit" />
+
+                        <ImageButton
+                            android:id="@+id/imgBtnDeletar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="48dp"
+                            android:layout_weight="0"
+                            android:backgroundTint="@color/white"
+                            android:contentDescription="Deletar livro"
+                            app:srcCompat="@drawable/ic_trash" />
+
+                        <ImageButton
+                            android:id="@+id/imgFavorito"
+                            android:layout_width="wrap_content"
+                            android:layout_height="48dp"
+                            android:layout_weight="0"
+                            android:backgroundTint="@color/white"
+                            android:contentDescription="Favoritar livro"
+                            app:srcCompat="@drawable/ic_fav" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="154dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/txtPaginasLidas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:text="pgsRestantes"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:text="/"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/txtPaginas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:text="pgs"
+                            android:textColor="@color/black" />
+
+                    </LinearLayout>
+
+                    <ProgressBar
+                        android:id="@+id/progressBar"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="50dp"
+                        android:layout_weight="0"
+                        android:progressTint="@color/white" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
 
 
 </LinearLayout>

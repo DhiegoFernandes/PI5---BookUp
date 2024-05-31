@@ -70,7 +70,6 @@ class LivroListFragment : Fragment() {
 
         val adapter = LivroAdapter(
             onEdit = { livro ->
-                // TODO: POPUP ao inves de fragment
                 val action = LivroListFragmentDirections.actionGlobalPopUpFragmentAtualiza2(livro)
                 findNavController().navigate(action)
 
@@ -87,10 +86,17 @@ class LivroListFragment : Fragment() {
                     val livro = // Obtenha o livro correspondente
                         if (livro.favorito == 0) {
                             livroViewModel.marcarComoFavorito(livro)
-                            Toast.makeText(context, "Livro marcado como favorito", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, "${livro.nome} foi marcado como favorito", Toast.LENGTH_SHORT).show()
+                            //Reiniciar recycler
+
+                            findNavController().popBackStack()
+                            findNavController().navigate(R.id.action_principal_to_livros)
                         } else {
                             livroViewModel.desmarcarComoFavorito(livro)
-                            Toast.makeText(context, "Livro removido dos favoritos", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, "${livro.nome} foi removido dos favoritos", Toast.LENGTH_SHORT).show()
+                            //Reiniciar recycler
+                            findNavController().popBackStack()
+                            findNavController().navigate(R.id.action_principal_to_livros)
                         }
                 }
             }
@@ -140,6 +146,7 @@ class LivroListFragment : Fragment() {
         binding.editPesquisa.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 // Não é necessário implementar este método neste caso
+
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
