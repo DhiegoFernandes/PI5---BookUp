@@ -8,17 +8,30 @@
     tools:context=".ui.LivroListFragment">
 
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_wave">
+    </RelativeLayout>
+
     <TextView
         android:id="@+id/txtTelaLivros"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Meus livros"
-        android:textColor="@color/white"
+        android:layout_marginTop="0dp"
+        android:text="MEUS LIVROS"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         android:textSize="32sp"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="8dp"
+        android:fontFamily="sans-serif-black"
+        />
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -41,19 +54,23 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="13dp"
-        android:backgroundTint="@color/azul"
+        android:backgroundTint="@color/white"
         android:clickable="true"
         android:contentDescription="Adicionar"
         android:src="@drawable/ic_add"
+        app:tint="@color/black"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/recyclerViewLivros"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationViewLivros"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/azul"
+        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/black"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

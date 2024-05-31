@@ -2,7 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="cinza">#ccc</color>
+    <color name="cinza">#cccccc</color>
+    <color name="cinzaEscuro">#4C5559</color>
     <color name="azul">#00E5FE</color>
+    <color name="azulEscuro">#0548ff</color>
+    <color name="azulEscuro2">#1505ff</color>
     <color name="amarelo">#F7E801</color>
+    <color name="vermelho">#FC0000</color>
 </resources>

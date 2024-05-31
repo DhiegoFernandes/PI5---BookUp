@@ -48,7 +48,6 @@ class PopUpFragmentAtualiza : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val livroinfo = args.livro
-        binding.txtNomeLivroAtualiza.setText("${livroinfo.nome}")
         binding.editPaginasQueLi.setHint("Páginas que li (${livroinfo.paginasLidas})")
         binding.editNomeLivro.setText(livroinfo.nome)
 
@@ -59,33 +58,57 @@ class PopUpFragmentAtualiza : DialogFragment() {
             val paginasLidas = binding.editPaginasQueLi.text.toString()
             val favorito = livroinfo.favorito
 
-
-            if (paginasLidas.isNotEmpty() && nome.isNotEmpty()){
-                if (paginasLidas.toInt() >= 1) {
-                    if (paginasLidas.toInt() <= paginas!!) {
-                        val livroAtualizado = Livro(livroId, nome, paginas, paginasLidas.toInt(), favorito)
-                        livroViewModel.atualizarLivro(livroAtualizado)
-
-                        Toast.makeText(context, "Livro atualizado", Toast.LENGTH_SHORT).show()
-                        //UPDATE
-                        findNavController().popBackStack()
-                        findNavController().popBackStack()
-                        findNavController().navigate(R.id.action_principal_to_livros)
-                        dismiss()//Fecha pop up
-                    }else{
-                        Toast.makeText(context, "A quantidade de páginas é maior que a quantidade de páginas do livro", Toast.LENGTH_LONG).show()
-                    }
-                } else{
-                    Toast.makeText(context, "Você deve ter lido pelo menos uma página.", Toast.LENGTH_SHORT).show()
-                }
+            Toast.makeText(context, "$paginasLidas", Toast.LENGTH_SHORT).show()
+            if (paginasLidas.isEmpty()) {
+                val paginasLidasInt = livroinfo.paginasLidas.toString().toInt()
+                val livroATT = Livro(livroId, nome, paginas, paginasLidasInt, favorito)
+                livroViewModel.atualizarLivro(livroATT)
+                Toast.makeText(context, "Livro atualizado", Toast.LENGTH_SHORT).show()
+                //UPDATE
+                findNavController().popBackStack()
+                findNavController().popBackStack()
+                findNavController().navigate(R.id.action_principal_to_livros)
+                dismiss()//Fecha pop up
             } else{
-                Toast.makeText(context, "Preencha todos os campos.", Toast.LENGTH_SHORT).show()
+                if (nome.isNotEmpty() && paginasLidas.isNotEmpty()) {
+                    if (paginasLidas.toInt() >= 1) {
+                        if (paginasLidas.toInt() <= paginas!!) {
+                            val livroAtualizado =
+                                Livro(livroId, nome, paginas, paginasLidas.toInt(), favorito)
+                            livroViewModel.atualizarLivro(livroAtualizado)
+
+                            Toast.makeText(context, "Livro atualizado", Toast.LENGTH_SHORT).show()
+                            //UPDATE
+                            findNavController().popBackStack()
+                            findNavController().popBackStack()
+                            findNavController().navigate(R.id.action_principal_to_livros)
+                            dismiss()//Fecha pop up
+                        } else {
+                            Toast.makeText(
+                                context,
+                                "A quantidade de páginas é maior que a quantidade de páginas do livro.",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                    } else {
+                        Toast.makeText(
+                            context,
+                            "Você deve ter lido pelo menos uma página.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                } else {
+                    Toast.makeText(context, "Preencha todos os campos.", Toast.LENGTH_SHORT).show()
+                }
             }
 
 
-
-
         }
+
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

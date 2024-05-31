@@ -18,7 +18,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -209,6 +210,16 @@
                 android:text="Atualizar horário"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btnVoltarAjustes"
+                android:layout_width="wrap_content"
+                android:layout_height="58dp"
+                android:backgroundTint="@color/azul"
+                android:text="Voltar"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:layout_marginTop="50dp"/>
 
         </LinearLayout>
     </ScrollView>

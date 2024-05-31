@@ -17,6 +17,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.app.NotificationManagerCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.airbnb.lottie.LottieAnimationView
 import com.airbnb.lottie.LottieDrawable
@@ -83,52 +84,60 @@ class Ajustes : Fragment() {
         binding.animacaoNotificacao.playAnimation()
 
         binding.btnAtualizaAlarme.setOnClickListener {
+            //Verifica se tem permição para notificações
+            val notificationManager = NotificationManagerCompat.from(requireContext())
+            val hasNotificationPermission = notificationManager.areNotificationsEnabled()
 
-            val selectedRadioButtonId = binding.radioGroupPeriodos.checkedRadioButtonId
+            if (hasNotificationPermission){
+                val selectedRadioButtonId = binding.radioGroupPeriodos.checkedRadioButtonId
 
-            val periodoSelecionado = when (selectedRadioButtonId) {
-                R.id.rdbManha -> "8"
-                R.id.rdbTarde -> "14"
-                R.id.rdbNoite -> "18"
-                else -> ""
-            }
-
-            if (periodoSelecionado.isNotEmpty()) {
-                livroViewModel.todosLivrosOrdPorFavoritos.observe(viewLifecycleOwner) { livrosEncontrados ->
-                    if (livrosEncontrados.isNotEmpty()) {
-                        //pega o primeiro livro da lista
-                        val primeiroLivro = livrosEncontrados[0]
-
-                        val hora = periodoSelecionado.toInt()
-                        val minuto = "00".toInt()
-
-                        val paginas = primeiroLivro.paginas
-                        val paginasLidas = primeiroLivro.paginasLidas
-                        val nomeLivro = primeiroLivro.nome ?: "Livro"
-                        val titulo = "Chegou a hora de ler ${primeiroLivro.nome}!"
-                        val mensagem = "Não esqueça de atualizar as páginas que você já leu! ($paginasLidas/$paginas)"
-
-                        marcarNotificacaoDiaria(nomeLivro, mensagem, hora, minuto)
-
-                        AlertDialog.Builder(context)
-                            .setTitle("Horário de notificações alterado!")
-                            .setMessage(
-                                "Próxima Notificação: " + titulo +
-                                        "\nMensagem: " + mensagem +
-                                        "\nHorário: " + hora + ":" + "00"
-                            )
-                            .setPositiveButton("Ok!") { _, _ -> }
-                            .show()
-
-                        //Toast.makeText(context, "ID: $idLivro Nome: $nomeLivro P:$paginasLidas R:$paginaLivro" , Toast.LENGTH_SHORT).show()
-                    } else {
-                        Toast.makeText(context, "Cadastre um livro antes de receber notificações personalizadas!", Toast.LENGTH_SHORT).show()
-                    }
+                val periodoSelecionado = when (selectedRadioButtonId) {
+                    R.id.rdbManha -> "8"
+                    R.id.rdbTarde -> "14"
+                    R.id.rdbNoite -> "18"
+                    else -> ""
                 }
-            } else {
-                // Caso nenhum período seja selecionado
-                Toast.makeText(context, "Escolha um período para receber notificações personalizadas!", Toast.LENGTH_SHORT).show()
+
+                if (periodoSelecionado.isNotEmpty()) {
+                    livroViewModel.todosLivrosOrdPorFavoritos.observe(viewLifecycleOwner) { livrosEncontrados ->
+                        if (livrosEncontrados.isNotEmpty()) {
+                            //pega o primeiro livro da lista
+                            val primeiroLivro = livrosEncontrados[0]
+
+                            val hora = periodoSelecionado.toInt()
+                            val minuto = "00".toInt()
+
+                            val paginas = primeiroLivro.paginas
+                            val paginasLidas = primeiroLivro.paginasLidas
+                            val nomeLivro = primeiroLivro.nome ?: "Livro"
+                            val titulo = "Chegou a hora de ler ${primeiroLivro.nome}!"
+                            val mensagem = "Não esqueça de atualizar as páginas que você já leu! ($paginasLidas/$paginas)"
+
+                            marcarNotificacaoDiaria(nomeLivro, mensagem, hora, minuto)
+
+                            AlertDialog.Builder(context)
+                                .setTitle("Horário de notificações alterado!")
+                                .setMessage(
+                                    "Próxima Notificação: " + titulo +
+                                            "\nMensagem: " + mensagem +
+                                            "\nHorário: " + hora + ":" + "00"
+                                )
+                                .setPositiveButton("Ok!") { _, _ -> }
+                                .show()
+
+                            //Toast.makeText(context, "ID: $idLivro Nome: $nomeLivro P:$paginasLidas R:$paginaLivro" , Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(context, "Cadastre um livro antes de receber notificações personalizadas!", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                } else {
+                    // Caso nenhum período seja selecionado
+                    Toast.makeText(context, "Escolha um período para receber notificações personalizadas!", Toast.LENGTH_SHORT).show()
+                }
+            }else{
+                Toast.makeText(context, "Ative as notificações para receber notificações personalizadas!", Toast.LENGTH_SHORT).show()
             }
+
         }
     }
 
@@ -195,7 +204,6 @@ class Ajustes : Fragment() {
     private fun updatePermissionStatus() {
         val notificationManager = NotificationManagerCompat.from(requireContext())
         val hasNotificationPermission = notificationManager.areNotificationsEnabled()
-
         if (hasNotificationPermission) {
             binding.txtPermitiu.text = "Concedida."
             binding.switch1.isChecked = true
@@ -210,6 +218,10 @@ class Ajustes : Fragment() {
 
         binding.switch1.setOnClickListener{
             pedirPermissao()
+        }
+
+        binding.btnVoltarAjustes.setOnClickListener {
+            findNavController().popBackStack()
         }
 
 

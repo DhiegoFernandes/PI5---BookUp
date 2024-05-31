@@ -11,8 +11,15 @@
         android:id="@+id/bottomNavigationViewPrincipal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
+        
+        app:backgroundTint="@color/azul"
         android:background="@color/azul"
+        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/white"
         android:textColor="@color/black"
+
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu" />
