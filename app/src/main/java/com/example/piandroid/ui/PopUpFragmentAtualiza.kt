@@ -58,7 +58,6 @@ class PopUpFragmentAtualiza : DialogFragment() {
             val paginasLidas = binding.editPaginasQueLi.text.toString()
             val favorito = livroinfo.favorito
 
-            Toast.makeText(context, "$paginasLidas", Toast.LENGTH_SHORT).show()
             if (paginasLidas.isEmpty()) {
                 val paginasLidasInt = livroinfo.paginasLidas.toString().toInt()
                 val livroATT = Livro(livroId, nome, paginas, paginasLidasInt, favorito)
