@@ -3,13 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.matematica">
+    tools:context=".ui.matematica"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:background="@color/white">
 
         <!-- Tabuada de 1 a 10 -->
         <TextView
@@ -20,6 +22,7 @@
             android:text="Principais Fórmulas Matemática básica"
             android:textSize="28sp"
             android:textStyle="bold"
+            android:textColor="@color/black"
             android:textAlignment="center"
             android:background="@drawable/custom_textview"/>
 
@@ -150,6 +153,7 @@
             android:paddingTop="16dp"
             android:textAlignment="center"
             android:background="@drawable/custom_textview"
+            android:textColor="@color/black"
             />
 
         <TextView

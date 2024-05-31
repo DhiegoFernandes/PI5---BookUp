@@ -7,7 +7,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@color/white">
 
         <!-- Seção de Dicas de Leitura de Ficção -->
         <TextView
@@ -17,6 +19,7 @@
             android:textAlignment="center"
             android:textSize="28sp"
             android:textStyle="bold"
+            android:textColor="@color/black"
             android:paddingTop="16dp"
             android:paddingBottom="16dp"
             android:layout_marginBottom="8dp"
