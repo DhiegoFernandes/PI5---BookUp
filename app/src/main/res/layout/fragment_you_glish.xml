@@ -5,53 +5,54 @@
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ui.YouGlish">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="33dp"
-        android:layout_marginBottom="29dp"
-        android:text="Aprenda a pronúncia das palavras"
-        app:layout_constraintBottom_toTopOf="@+id/webViewYouglish"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <WebView
         android:id="@+id/webViewYouglish"
-        android:layout_width="381dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="6dp"
+        android:layout_width="408dp"
+        android:layout_height="356dp"
+        android:minHeight="300dp"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="411dp"
-        android:layout_height="215dp"
-        android:layout_marginBottom="6dp"
+        android:layout_width="fill_parent"
+        android:layout_height="309dp"
+        android:background="@color/black"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/webViewYouglish">
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="8dp"
+            android:text="Aprenda a pronúncia de palavras"
+            android:textColor="@color/white"
+            android:textSize="22dp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/editPesquisa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:height="50dp"
+            android:background="@drawable/custom_input"
             android:ems="14"
-            android:hint="Palavra"
+            android:hint="Palavra/Frase"
             android:inputType="text"
-            android:minHeight="48dp" />
+            android:minHeight="48dp"
+            android:textAlignment="center" />
 
         <RadioGroup
             android:id="@+id/radioGroupLingua"
@@ -63,22 +64,36 @@
                 android:id="@+id/rdbPt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Portugues"
-                android:textAlignment="center" />
+                android:text="Português"
+                android:textAlignment="center"
+                android:textColor="@color/white" />
 
             <RadioButton
                 android:id="@+id/rdbIngles"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Inglês"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/white" />
         </RadioGroup>
 
         <Button
             android:id="@+id/btnPesquisar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pesquisar" />
+            android:backgroundTint="@color/azul"
+            android:ems="14"
+            android:text="Pesquisar"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/btnVoltarYouglish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/azul"
+            android:text="Voltar"
+            android:textColor="@color/black" />
     </LinearLayout>
 
 

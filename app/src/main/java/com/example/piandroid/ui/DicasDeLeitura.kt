@@ -9,17 +9,13 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.piandroid.R
 import com.example.piandroid.databinding.FragmentDicasDeLeituraBinding
+import com.example.piandroid.databinding.FragmentMatematicaBinding
 
 class DicasDeLeitura : Fragment() {
 
     private var _binding: FragmentDicasDeLeituraBinding? = null
     private val binding get() = _binding!!
 
-    private val categoriaConteudos = mapOf(
-        "Categoria 1" to "Conteúdo para a Categoria 1",
-        "Categoria 2" to "Conteúdo para a Categoria 2"
-        // Adicione mais categorias e conteúdos conforme necessário
-    )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,33 +29,55 @@ class DicasDeLeitura : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         iniciaListeners()
 
-        binding.button.setOnClickListener {
-            atualizarConteudoCategoria("Categoria 1")
+
+
+        binding.btnLiteratura.setOnClickListener {
+            removeCurrentFragment()
+
+            val fragmentLiteratura = Literatura()
+            val fragmentManager = requireActivity().supportFragmentManager
+            val transaction = fragmentManager.beginTransaction()
+            transaction.replace(R.id.fragmentCVDicas, fragmentLiteratura)
+            transaction.addToBackStack(null)
+            transaction.commit()
         }
 
-        binding.button2.setOnClickListener {
-            atualizarConteudoCategoria("Categoria 2")
+        binding.btnMatematica.setOnClickListener {
+            // Remove o fragmento atual, se existir
+            removeCurrentFragment()
+
+            val fragmentMatematica = matematica()
+            val fragmentManager = requireActivity().supportFragmentManager
+            val transaction = fragmentManager.beginTransaction()
+            transaction.replace(R.id.fragmentCVDicas, fragmentMatematica)
+            transaction.addToBackStack(null)
+            transaction.commit()
         }
 
-
-    }
-
-    private fun atualizarConteudoCategoria(categoria: String) {
-        val conteudo = categoriaConteudos[categoria]
-        conteudo?.let {
-            // Atualize os TextViews ou outros componentes do layout com o conteúdo da categoria
-            binding.textView.text = it // Exemplo: atualizar um TextView com o conteúdo
-        } ?: run {
-            // exibir uma mensagem de erro se a categoria não for encontrada
-            Toast.makeText(context, "Categoria não encontrada", Toast.LENGTH_SHORT).show()
-        }
-    }
-
-
-    private fun iniciaListeners(){
-        binding.btnYouGlish.setOnClickListener {
+        binding.btnIdiomas.setOnClickListener {
             findNavController().navigate(R.id.action_dicasDeLeitura_to_youGlish)
         }
+    }
+
+    private fun removeCurrentFragment() {
+        val currentFragment = requireActivity().supportFragmentManager.findFragmentById(R.id.fragmentCVDicas)
+        if (currentFragment != null) {
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.remove(currentFragment)
+            transaction.commit()
+        }
+    }
+
+    private fun iniciaListeners(){
+        removeCurrentFragment()
+
+        //Por padrão inicia o container na tela literatura
+        val fragmentLiteratura = Literatura()
+        val fragmentManager = requireActivity().supportFragmentManager
+        val transaction = fragmentManager.beginTransaction()
+        transaction.replace(R.id.fragmentCVDicas, fragmentLiteratura)
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
 
     override fun onDestroyView() {

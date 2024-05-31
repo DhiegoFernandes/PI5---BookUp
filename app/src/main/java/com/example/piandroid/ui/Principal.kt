@@ -37,8 +37,6 @@ class Principal : Fragment() {
         activity?.window?.navigationBarColor = ContextCompat.getColor(requireContext(), R.color.azul)
         iniciarListeners()
 
-        //todo criar categorias para dicas
-
     }
 
     private fun iniciarListeners(){
